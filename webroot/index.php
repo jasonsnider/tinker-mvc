@@ -12,4 +12,7 @@ namespace Tinker;
  */
 define('DS', DIRECTORY_SEPARATOR);
 
-
+/**
+ * @const string Defines a standard ROOT file path
+ */
+define('ROOT', dirname(dirname(__FILE__)));

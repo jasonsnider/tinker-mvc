@@ -1,7 +1,5 @@
 <?php
 
-require 'core/vendor/PhpFig/src/Loader.php';
-
 class MockLoader extends \PhpFig\Loader
 {
     protected $files = array();

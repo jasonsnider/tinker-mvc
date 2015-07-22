@@ -1,8 +1,11 @@
 <?php
-namespace Example;
+/**
+ * Loader.php
+ */
+namespace PhpFig;
 
 /**
- * An example of a general-purpose implementation that includes the optional
+ * A general-purpose implementation that includes the optional
  * functionality of allowing multiple base directories for a single namespace
  * prefix.
  * 
@@ -42,10 +45,10 @@ namespace Example;
  * The following line would cause the autoloader to attempt to load the 
  * \Foo\Bar\Qux\QuuxTest class from /path/to/packages/foo-bar/tests/Qux/QuuxTest.php:
  * 
- *      <?php
+ *      <?php0
  *      new \Foo\Bar\Qux\QuuxTest;
  */
-class Psr4AutoloaderClass
+class Loader
 {
     /**
      * An associative array where the key is a namespace prefix and the value

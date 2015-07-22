@@ -8,12 +8,12 @@
 namespace Tinker;
 
 /**
- * @const string Shorthand for DIRECTORY_SEPARATOR
+ * Shorthand for DIRECTORY_SEPARATOR
  */
 define('DS', DIRECTORY_SEPARATOR);
 
 /**
- * @const string Defines a standard ROOT file path
+ * Defines a standard ROOT file path
  */
 define('ROOT', dirname(dirname(__FILE__)));
 

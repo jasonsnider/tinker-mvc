@@ -45,4 +45,4 @@ define('ROOT', dirname(dirname(__FILE__)));
 // $class = '\\Example\\Controller\\MainController';
 // $Controller = new $class();
 // $Controller->index();
-
+echo 'Tinker MVC<br><br>';

@@ -21,7 +21,7 @@ define('ROOT', dirname(dirname(__FILE__)));
 // I like to know how long things take. Start tracking the serer build time as soon as possible.
 
 //// Bootstrapping
-//
+require ROOT . DS . 'config' . DS . 'bootstrap.php';
 
 //// Dispatching and routing 
 // Analyze the pretty url and route the requests
@@ -46,3 +46,4 @@ define('ROOT', dirname(dirname(__FILE__)));
 // $Controller = new $class();
 // $Controller->index();
 echo 'Tinker MVC<br><br>';
+var_dump($Loader);

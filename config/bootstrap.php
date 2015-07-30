@@ -27,3 +27,9 @@ require ROOT . DS .
 
 $Loader = new \PhpFig\Loader;
 $Loader->register();
+
+//Autoload all files in the Tinker namesspace
+$Loader->addNamespace(
+    "\Tinker",
+    ROOT . DS . 'core' . DS . 'Tinker' . DS . 'src'
+);

@@ -27,10 +27,13 @@ require ROOT . DS . 'config' . DS . 'bootstrap.php';
 // Analyze the pretty url and route the requests
 // Instantiate controllers, views and themes (or use auto laoding?)
 
+$Router = Di\IoCRegistry::resolve('Router');
+
 echo '<pre>';
-var_dump($Loader);
-var_dump($_SERVER['REQUEST_URI']);
+var_dump($Router->getPlugin());
+//var_dump($Loader);
 echo '</pre>';
+
 // Gather plugins, controllers and actions
 // Given the URI /example/main/index/p1/p2/p3/p4:1
 // We would be passing 4 GET parameters (where p4 is a named key to value pair and p1 - p3 would be assigned numeric 

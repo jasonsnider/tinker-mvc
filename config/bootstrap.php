@@ -33,3 +33,6 @@ $Loader->addNamespace(
     "\Tinker",
     ROOT . DS . 'core' . DS . 'Tinker' . DS . 'src'
 );
+
+//Fetch DI containers
+require ROOT . DS . 'config' . DS . 'containers.php';

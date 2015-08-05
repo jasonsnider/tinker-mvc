@@ -2,6 +2,7 @@
 
 class MockLoader extends \PhpFig\Loader
 {
+
     protected $files = array();
 
     public function setFiles(array $files)
@@ -13,10 +14,12 @@ class MockLoader extends \PhpFig\Loader
     {
         return in_array($file, $this->files);
     }
+
 }
 
 class LoaderTest extends \PHPUnit_Framework_TestCase
 {
+
     protected $loader;
 
     protected function setUp()
@@ -33,28 +36,23 @@ class LoaderTest extends \PHPUnit_Framework_TestCase
         ));
 
         $this->loader->addNamespace(
-            'Foo\Bar',
-            '/vendor/foo.bar/src'
+                'Foo\Bar', '/vendor/foo.bar/src'
         );
 
         $this->loader->addNamespace(
-            'Foo\Bar',
-            '/vendor/foo.bar/tests'
+                'Foo\Bar', '/vendor/foo.bar/tests'
         );
 
         $this->loader->addNamespace(
-            'Foo\BarDoom',
-            '/vendor/foo.bardoom/src'
+                'Foo\BarDoom', '/vendor/foo.bardoom/src'
         );
 
         $this->loader->addNamespace(
-            'Foo\Bar\Baz\Dib',
-            '/vendor/foo.bar.baz.dib/src'
+                'Foo\Bar\Baz\Dib', '/vendor/foo.bar.baz.dib/src'
         );
 
         $this->loader->addNamespace(
-            'Foo\Bar\Baz\Dib\Zim\Gir',
-            '/vendor/foo.bar.baz.dib.zim.gir/src'
+                'Foo\Bar\Baz\Dib\Zim\Gir', '/vendor/foo.bar.baz.dib.zim.gir/src'
         );
     }
 
@@ -92,4 +90,5 @@ class LoaderTest extends \PHPUnit_Framework_TestCase
         $expect = '/vendor/foo.bardoom/src/ClassName.php';
         $this->assertSame($expect, $actual);
     }
+
 }

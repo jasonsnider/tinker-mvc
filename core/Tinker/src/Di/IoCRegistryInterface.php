@@ -2,6 +2,7 @@
 /**
  * IoCRegistry.php.
  */
+
 namespace Tinker\Di;
 
 /**
@@ -24,45 +25,45 @@ interface IoCRegistryInterface
 
     /**
      * Adds a container to the registry.
-	 * 
+     * 
      * @param  string $name
      * @param  object $container
      * @return void
      */
-	public static function register($name, $container);
+    public static function register($name, $container);
 
-	/**
-	 * Removes a container from the registry.
-	 * 
-	 * @param type $name
-	 * @retern void
-	 */
-	public static function unregister($name);
-	
+    /**
+     * Removes a container from the registry.
+     * 
+     * @param type $name
+     * @retern void
+     */
+    public static function unregister($name);
+
     /**
      * Returns true if a given container has been registered.
-	 * 
+     * 
      * @param  string $name
      * @return bool
      */
     public static function registered($name);
-	
-	/**
-	 * Returns a list of all containers in the registry.
-	 * 
-	 * @return void
-	 */
-	public static function registry();
- 
-	/**
+
+    /**
+     * Returns a list of all containers in the registry.
+     * 
+     * @return void
+     */
+    public static function registry();
+
+    /**
      * Instantiates a registered container. 
-	 * 
-	 * Instantiates a registered container. Throws an Exception if the 
-	 * container is not registered.
-	 * 
+     * 
+     * Instantiates a registered container. Throws an Exception if the 
+     * container is not registered.
+     * 
      * @param  string $name
      * @return mixed
-	 * @throws \Exception
-	 */
+     * @throws \Exception
+     */
     public static function resolve($name);
 }

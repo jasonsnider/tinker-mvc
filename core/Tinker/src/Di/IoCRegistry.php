@@ -2,6 +2,7 @@
 /**
  * IoCRegistry.php.
  */
+
 namespace Tinker\Di;
 
 /**
@@ -21,15 +22,16 @@ namespace Tinker\Di;
  */
 class IoCRegistry implements IoCRegistryInterface
 {
-   /**
-    * An array of registered containers
-    * @var array
-    */
+
+    /**
+     * An array of registered containers
+     * @var array
+     */
     protected static $registry = array();
 
     /**
      * Adds a container to the registry.
-	 * 
+     * 
      * @param  string $name
      * @param  object $container
      * @return void
@@ -38,21 +40,21 @@ class IoCRegistry implements IoCRegistryInterface
     {
         self::$registry[$name] = $container;
     }
-	
-	/**
-	 * Removes a container from the registry.
-	 * 
-	 * @param type $name
-	 * @retern void
-	 */
-	public static function unregister($name)
-	{
-		unset(self::$registry[$name]);
-	}
-	
+
+    /**
+     * Removes a container from the registry.
+     * 
+     * @param type $name
+     * @retern void
+     */
+    public static function unregister($name)
+    {
+        unset(self::$registry[$name]);
+    }
+
     /**
      * Returns true if a given container has been registered.
-	 * 
+     * 
      * @param  string $name
      * @return bool
      */
@@ -60,37 +62,37 @@ class IoCRegistry implements IoCRegistryInterface
     {
         return array_key_exists($name, self::$registry);
     }
-	
-	/**
-	 * Returns a list of all containers in the registry.
-	 * 
-	 * @return void
-	 */
-	public static function registry()
-	{
-		return self::$registry;
-	}
- 
-	/**
+
+    /**
+     * Returns a list of all containers in the registry.
+     * 
+     * @return void
+     */
+    public static function registry()
+    {
+        return self::$registry;
+    }
+
+    /**
      * Instantiates a registered container. 
-	 * 
-	 * Instantiates a registered container. Throws an Exception if the 
-	 * container is not registered.
-	 * 
+     * 
+     * Instantiates a registered container. Throws an Exception if the 
+     * container is not registered.
+     * 
      * @param  string $name
      * @return mixed
-	 * @throws \Exception
-	 */
+     * @throws \Exception
+     */
     public static function resolve($name)
     {
-		$obj = null;
-		
+        $obj = null;
+
         if (self::registered($name))
         {
             $obj = self::$registry[$name];
             return $obj();
         }
- 
+
         throw new \Exception('Container not found.');
     }
 

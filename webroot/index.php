@@ -73,8 +73,4 @@ var_dump($Loader);
 
 $class = "\\{$plugin}\\Controller\\{$controller}";
 $Controller = new $class($BuildTime);
-
-//Just a quick test for buildtime
-sleep(1);
-
 $Controller->{$action}();

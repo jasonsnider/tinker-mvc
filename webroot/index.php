@@ -60,16 +60,10 @@ $plugin = $Router->getPlugin(true);
 $controller = $Router->getPlugin(true) . 'Controller';
 $action = $Router->getAction();
 
-var_dump($plugin);
-var_dump($controller);
-var_dump($action);
-
 //Autoload all plugins
 $Loader->addNamespace(
     $plugin, ROOT . DS . 'plugin' . DS . $plugin . DS . 'src'
 );
-
-var_dump($Loader);
 
 $class = "\\{$plugin}\\Controller\\{$controller}";
 $Controller = new $class($BuildTime);

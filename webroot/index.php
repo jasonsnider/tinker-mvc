@@ -20,7 +20,10 @@ define('DS', DIRECTORY_SEPARATOR);
 define('ROOT', dirname(dirname(__FILE__)));
 
 //// Build time
-// I like to know how long things take. Start tracking the serer build time as soon as possible.
+require ROOT . DS . 'core' . DS . 'Tinker' . DS . 'src' . DS . 'Utility' . DS . 'BuildTime.php';
+
+$BuildTime = new Utility\BuildTime();
+
 //// Bootstrapping
 require ROOT . DS . 'config' . DS . 'bootstrap.php';
 
@@ -69,5 +72,9 @@ $Loader->addNamespace(
 var_dump($Loader);
 
 $class = "\\{$plugin}\\Controller\\{$controller}";
-$Controller = new $class();
+$Controller = new $class($BuildTime);
+
+//Just a quick test for buildtime
+sleep(1);
+
 $Controller->{$action}();

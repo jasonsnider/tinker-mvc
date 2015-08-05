@@ -23,8 +23,12 @@ abstract class Controller
     {
         //Since a controller action should only concern itself with it's own business login,
         //it seems using the descructor for "auto-rendering" would be ideal.
-        var_dump('DESTRCUTOR');
-        echo $this->BuildTime->end();
+        
+        ob_start();
+        $output = 'build time: ' . $this->BuildTime->end();
+        ob_end_clean();
+        
+        echo $output;
     }
 
 }

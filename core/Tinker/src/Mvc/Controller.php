@@ -28,7 +28,7 @@ abstract class Controller
         $output = 'build time: ' . $this->BuildTime->end();
         ob_end_clean();
         
-        echo $output;
+        echo "<html><head><title>TinkerMVC Test</title></head><body>$output</body></html>";
     }
 
 }

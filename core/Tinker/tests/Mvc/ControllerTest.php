@@ -25,8 +25,14 @@ class ControllerTest extends \PHPUnit_Framework_TestCase
     
     public function testDestructRendersContent(){
         ob_start();
+        
         $this->TestController->__destruct();
-        $this->assertSame('build time: 1', ob_get_contents());
+        $output = ob_get_contents();
+        $hasHtmlTag = stripos($output, '<html>') === false?false:true;
+        $noFoobarTag = stripos($output, '<foobar>') === false?false:true; //Because foobar is not a tag
+        $this->assertTrue($hasHtmlTag);
+        //Sanity check to make sure the above is not just always returning true
+        $this->assertFalse($noFoobarTag);
         ob_end_clean();
     }
     

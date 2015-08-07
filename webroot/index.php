@@ -31,7 +31,7 @@ require ROOT . DS . 'config' . DS . 'bootstrap.php';
 // Analyze the pretty url and route the requests
 // Instantiate controllers, views and themes (or use auto laoding?)
 
-$Router = Di\IoCRegistry::resolve('Router');
+$Router = new Mvc\Router($_SERVER['REQUEST_URI']);
 
 // Gather plugins, controllers and actions
 // Given the URI /example/main/index/p1/p2/p3/p4:1

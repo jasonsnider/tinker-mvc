@@ -37,4 +37,4 @@ $Loader->addNamespace(
 );
 
 //Fetch DI containers
-require ROOT . DS . 'config' . DS . 'containers.php';
+//require ROOT . DS . 'config' . DS . 'containers.php';

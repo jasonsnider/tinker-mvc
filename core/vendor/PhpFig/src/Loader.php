@@ -61,6 +61,14 @@ class Loader
     protected $prefixes = array();
 
     /**
+     * Returns the list of registered prefixes
+     * @return array
+     */
+    public function getPrefixes(){
+        return $this->prefixes;
+    }
+    
+    /**
      * Register loader with SPL autoloader stack.
      * 
      * @return void

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Controller
  */
@@ -11,24 +12,61 @@ namespace Tinker\Mvc;
 abstract class Controller
 {
 
-    public function __construct($BuildTime)
-    {
-        $this->BuildTime = $BuildTime;
-    }
-    
     /**
-     * Renders the view prior to exit
+     * Theme
+     * 
+     * @var object
+     */
+    protected $Theme;
+
+    /**
+     * View
+     * 
+     * @var object
+     */
+    protected $View;
+
+    /**
+     * Sets dependencies on startup
+     * 
+     * @param object $BuildTime
+     * @param object $Theme
+     * @param object $View
+     */
+    public function __construct($Theme, $View)
+    {
+        $this->setView($View);
+        $this->setTheme($Theme);
+    }
+
+    /**
+     * A setter for $View
+     * 
+     * @param object $View
+     */
+    public function setView($View)
+    {
+        $this->View = $View;
+    }
+
+    /**
+     * A setter for $Theme
+     * 
+     * @param object $Theme
+     */
+    public function setTheme($Theme)
+    {
+        $this->Theme = $Theme;
+    }
+
+    /**
+     * Renders the view on shutdown
+     * 
+     * @return void
      */
     public function __destruct()
     {
-        //Since a controller action should only concern itself with it's own business login,
-        //it seems using the descructor for "auto-rendering" would be ideal.
-        
-        ob_start();
-        $output = 'build time: ' . $this->BuildTime->end();
-        ob_end_clean();
-        
-        echo "<html><head><title>TinkerMVC Test</title></head><body>$output</body></html>";
+        echo $this->Theme->render($this->View);
     }
 
 }

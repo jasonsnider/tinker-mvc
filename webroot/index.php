@@ -33,6 +33,9 @@ require ROOT . DS . 'config' . DS . 'bootstrap.php';
 
 $Router = new Mvc\Router($_SERVER['REQUEST_URI']);
 
+$View = new \Tinker\Mvc\View($Router, $BuildTime, $Loader);
+$Theme = new \Tinker\Mvc\Theme($Router, $View, $Loader);
+
 // Gather plugins, controllers and actions
 // Given the URI /example/main/index/p1/p2/p3/p4:1
 // We would be passing 4 GET parameters (where p4 is a named key to value pair and p1 - p3 would be assigned numeric 
@@ -61,5 +64,5 @@ $Loader->addNamespace(
 );
 
 $class = "\\{$plugin}\\Controller\\{$controller}";
-$Controller = new $class($BuildTime);
+$Controller = new $class($Theme, $View);
 $Controller->{$action}();

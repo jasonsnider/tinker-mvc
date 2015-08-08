@@ -12,10 +12,31 @@ namespace Tinker\Mvc;
 
 /**
  * View Class
+ * 
+ * All properties of view SHOULD have public exposure. This will allow us to work with a
+ * given instance from inside of theme and view files.
  */
 class View implements ViewInterface
 {
 
+    /**
+     * Holds the BuildTime object
+     * @var object 
+     */
+    public $BuildTime;
+    
+    /**
+     * Holds the Router object
+     * @var object
+     */
+    public $Router;
+    
+    /**
+     * Holds the Loader object
+     * @var object
+     */
+    public $Loader;
+    
     public function __construct($Router, $BuildTime, $Loader)
     {
         $this->BuildTime = $BuildTime;
@@ -63,5 +84,5 @@ class View implements ViewInterface
         ob_end_clean();
         return $output;
     }
-
+    
 }

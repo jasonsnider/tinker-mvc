@@ -15,7 +15,6 @@ class TinkerPluginController extends \Tinker\Mvc\Controller
      */
     public function index()
     {
-        //var_dump('INDEX');
     }
 
 }

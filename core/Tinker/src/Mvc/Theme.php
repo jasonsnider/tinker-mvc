@@ -28,7 +28,33 @@ namespace Tinker\Mvc;
  */
 class Theme implements ThemeInterface
 {
+    
+    /**
+     * Router
+     * @var object
+     */
+    public $Router;
+    
+    /**
+     * View
+     * @var object
+     */
+    public $View;
+    
+    /** 
+     * Loader
+     * @var object
+     */
+    public $Loader;
 
+    /**
+     * Sets dependencies
+     * 
+     * @param object $Router
+     * @param object $View
+     * @param object $Loader
+     * @return void
+     */
     public function __construct($Router, $View, $Loader)
     {
         $this->Router = $Router;

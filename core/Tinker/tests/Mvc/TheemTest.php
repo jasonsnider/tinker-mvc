@@ -1,6 +1,6 @@
 <?php
 
-class ViewTest extends \PHPUnit_Framework_TestCase
+class ThemeTest extends \PHPUnit_Framework_TestCase
 {
     
     /**
@@ -8,10 +8,10 @@ class ViewTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetters(){
 
-        $View = new \Tinker\Mvc\View('router', 'buildtime', 'loader');
+        $View = new \Tinker\Mvc\Theme('router', 'view', 'loader');
         
         $this->assertSame('router', $View->Router);
-        $this->assertSame('buildtime', $View->BuildTime);
+        $this->assertSame('view', $View->View);
         $this->assertSame('loader', $View->Loader);
     }
     

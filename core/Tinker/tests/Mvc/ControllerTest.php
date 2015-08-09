@@ -45,7 +45,7 @@ class ControllerTest extends \PHPUnit_Framework_TestCase
         );
         
         //Mock index.php
-        $BuildTime = new \Tinker\Utility\BuildTime();
+        $BuildTime = new \Tinker\Utility\BuildTime(microtime());
         $Router = new \Tinker\Mvc\Router('/tinker_plugin/tinker_plugin/index/e1/e2/e3/e4:1');
         $this->View = new \Tinker\Mvc\View($Router, $BuildTime, $Loader);
         $this->Theme = new \Tinker\Mvc\Theme($Router, $this->View, $Loader);

@@ -22,7 +22,7 @@ define('ROOT', dirname(dirname(__FILE__)));
 //// Build time
 require ROOT . DS . 'core' . DS . 'Tinker' . DS . 'src' . DS . 'Utility' . DS . 'BuildTime.php';
 
-$BuildTime = new Utility\BuildTime();
+$BuildTime = new Utility\BuildTime(microtime());
 
 //// Bootstrapping
 require ROOT . DS . 'config' . DS . 'bootstrap.php';

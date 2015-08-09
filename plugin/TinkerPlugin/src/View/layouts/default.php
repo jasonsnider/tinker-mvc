@@ -39,7 +39,7 @@
 			<nav>TinkerMVC</nav>
 			<div class="content"><?php echo $View->getOutput(); ?></div>
 			<footer>
-				<?php echo 'Hi, it took Apache ' . $View->BuildTime->end() . ' seconds to render this page.'; ?>
+				<?php echo 'Hi, it took Apache ' . round($View->BuildTime->end(microtime()), 5) . ' seconds to render this page.'; ?>
 			</footer>
 		</div>
 	</body>

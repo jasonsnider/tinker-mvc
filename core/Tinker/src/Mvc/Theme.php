@@ -81,7 +81,6 @@ class Theme implements ThemeInterface
      */
     public function setTheme($theme)
     {
-
         $this->theme = $theme;
     }
 

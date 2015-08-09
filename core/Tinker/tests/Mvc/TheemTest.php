@@ -8,11 +8,25 @@ class ThemeTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetters(){
 
-        $View = new \Tinker\Mvc\Theme('router', 'view', 'loader');
+        $Theme = new \Tinker\Mvc\Theme('router', 'view', 'loader');
         
-        $this->assertSame('router', $View->Router);
-        $this->assertSame('view', $View->View);
-        $this->assertSame('loader', $View->Loader);
+        $this->assertSame('router', $Theme->Router);
+        $this->assertSame('view', $Theme->View);
+        $this->assertSame('loader', $Theme->Loader);
+    }
+    
+    public function testSetTheme(){
+        $Theme = new \Tinker\Mvc\Theme('router', 'view', 'loader');
+        
+        $Theme->setTheme('Foo');
+        $this->assertSame('Foo', $Theme->getTheme());
+    }
+    
+    public function testSetLayout(){
+        $Theme = new \Tinker\Mvc\Theme('router', 'view', 'loader');
+        
+        $Theme->setLayout('Bar');
+        $this->assertSame('Bar', $Theme->getLayout());
     }
     
 

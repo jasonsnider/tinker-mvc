@@ -1,9 +1,7 @@
 <?php
-
 /**
- * Controller
+ * Controller.php
  */
-
 namespace Tinker\Mvc;
 
 /**
@@ -29,20 +27,36 @@ abstract class Controller
     /**
      * Sets dependencies on startup
      * 
-     * @param object $BuildTime
      * @param object $Theme
      * @param object $View
+     * @param object $Model
+     * @retrun void
      */
-    public function __construct($Theme, $View)
+    public function __construct($Theme, $View, $Model)
     {
         $this->setView($View);
         $this->setTheme($Theme);
+        $this->setModel($Model);
+    }
+
+    /**
+     * A setter for Model objects
+     * 
+     * @param object $model
+     * @retrun void
+     */
+    public function setModel($Model)
+    {    
+        $rc = new \ReflectionClass($Model);
+        $name = $rc->getShortName();
+        $this->{$name} = $Model;
     }
 
     /**
      * A setter for $View
      * 
      * @param object $View
+     * @retrun void
      */
     public function setView($View)
     {
@@ -53,6 +67,7 @@ abstract class Controller
      * A setter for $Theme
      * 
      * @param object $Theme
+     * @retrun void
      */
     public function setTheme($Theme)
     {
@@ -63,6 +78,7 @@ abstract class Controller
      * Renders the view on shutdown
      * 
      * @return void
+     * @retrun void
      */
     public function __destruct()
     {

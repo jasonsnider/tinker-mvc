@@ -20,6 +20,13 @@ class View implements ViewInterface
 {
 
     /**
+     * Holds variables for the view.
+     * 
+     * @var array
+     */
+    public $vars;
+    
+    /**
      * Holds the BuildTime object
      * @var object 
      */

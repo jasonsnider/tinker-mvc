@@ -30,6 +30,7 @@ class TinkerPluginControllerTest extends \PHPUnit_Framework_TestCase
         $this->Theme = new \Tinker\Mvc\Theme($Router, $this->View, $Loader);
 
         $plugin = $Router->getPlugin(true);
+        $model = $Router->getPlugin(true);
         $controller = $Router->getPlugin(true) . 'Controller';
         $this->action = $Router->getAction();
 
@@ -39,11 +40,14 @@ class TinkerPluginControllerTest extends \PHPUnit_Framework_TestCase
         );
         
         $this->class = "\\{$plugin}\\Controller\\{$controller}";
-        $this->TinkerPluginController = new $this->class($this->Theme, $this->View);
+        $Model = "\\{$plugin}\\Model\\{$model}";
+        
+        $this->TinkerPluginController = new $this->class($this->Theme, $this->View, new $Model());
+        $this->TinkerPluginController->{$this->action}();
     }
     
     public function testIndex(){        
-        $this->TinkerPluginController->index();
+        $this->TinkerPluginController->{$this->action}();
     }
 
 }

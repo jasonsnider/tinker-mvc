@@ -55,6 +55,7 @@ $Theme = new \Tinker\Mvc\Theme($Router, $View, $Loader);
 // $Controller->index();
 //Sample URI /tinker_plugin/tinker_plugin/execute/e1/e2/e3/e4:1
 $plugin = $Router->getPlugin(true);
+$model = $Router->getPlugin(true);
 $controller = $Router->getPlugin(true) . 'Controller';
 $action = $Router->getAction();
 
@@ -64,5 +65,7 @@ $Loader->addNamespace(
 );
 
 $class = "\\{$plugin}\\Controller\\{$controller}";
-$Controller = new $class($Theme, $View);
+$Model = "\\{$plugin}\\Model\\{$model}";
+
+$Controller = new $class($Theme, $View, new $Model());
 $Controller->{$action}();

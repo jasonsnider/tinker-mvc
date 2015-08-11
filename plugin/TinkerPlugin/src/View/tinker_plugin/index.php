@@ -1,2 +1,2 @@
 <h1>TinkerMVC</h1>
-<p>Welcome to TinkerMVC</p>
+<p><?php echo $this->vars['welcome']; ?></p>

@@ -35,6 +35,16 @@ class MockLoader extends \PhpFig\Loader
 	}
 }
 
+class MockLoader1 extends \PhpFig\Loader
+{
+
+    public function getRequireFile($file)
+    {
+        return $this->requireFile($file);
+    }
+
+}
+
 class LoaderTest extends \PHPUnit_Framework_TestCase
 {
 
@@ -109,7 +119,11 @@ class LoaderTest extends \PHPUnit_Framework_TestCase
 	}
 	
 	public function testRequireFile(){
-		$this->assertFalse($this->loader->getRequireFile('/var/www/tinker/app/core/Tinker/src/Mvc/Router1.php'));
+            
+            $ml = new MockLoader1();
+            $this->assertTrue(
+            $ml->getRequireFile(ROOT . DS . 'core' . DS . 'vendor' . DS . 'PhpFig' . DS . 'requireFileTest'));
+
 	}
 	
 	public function testExistingFile()

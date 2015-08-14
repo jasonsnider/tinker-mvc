@@ -61,6 +61,10 @@ $action = $Router->getAction();
 
 //Autoload all plugins
 $Loader->addNamespace(
+    $plugin, ROOT . DS . 'core' .  DS . 'plugin' . DS . $plugin . DS . 'src'
+);
+        
+$Loader->addNamespace(
     $plugin, ROOT . DS . 'plugin' . DS . $plugin . DS . 'src'
 );
 

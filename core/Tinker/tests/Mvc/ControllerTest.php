@@ -16,9 +16,7 @@ class MockController extends \Tinker\Mvc\Controller{
     public function __destruct(){}
 }
 
-class MockModel extends \Tinker\Mvc\Model{
-    
-}
+class MockModel extends \Tinker\Mvc\Model{}
 
 
 class ControllerTest extends \PHPUnit_Framework_TestCase
@@ -52,6 +50,10 @@ class ControllerTest extends \PHPUnit_Framework_TestCase
         $this->action = $Router->getAction();
 
         //Autoload all plugins
+        $Loader->addNamespace(
+            $plugin, ROOT . DS . 'core' .  DS . 'plugin' . DS . $plugin . DS . 'src'
+        );
+        
         $Loader->addNamespace(
             $plugin, ROOT . DS . 'plugin' . DS . $plugin . DS . 'src'
         );

@@ -1,4 +1,4 @@
 TinkerPlugin
-============
+=============
 
-An example plugin for the TinkerMVC framework.
+This is an example of a plugin used for unit testing.

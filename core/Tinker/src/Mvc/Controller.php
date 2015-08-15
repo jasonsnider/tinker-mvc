@@ -7,7 +7,7 @@ namespace Tinker\Mvc;
 /**
  * A base controller
  */
-abstract class Controller
+abstract class Controller implements Interfaces\Controller
 {
 
     /**

@@ -45,9 +45,8 @@ class Router implements Interfaces\Router
      * @param string $requestUri Represents the URI to be parsed
      * @return void
      */
-    public function __construct($Configure, $requestUri)
+    public function __construct($requestUri)
     {
-        $this->Configure = $Configure;
         $this->parseUri($requestUri);
     }
 
@@ -70,8 +69,8 @@ class Router implements Interfaces\Router
         switch ($uriLegnth)
         {
             case 0:
-                $this->setPlugin($this->Configure->read('plugin'));
-                $this->setController($this->Configure->read('controller'));
+                $this->setPlugin(\Tinker\Configure::read('plugin'));
+                $this->setController(\Tinker\Configure::read('controller'));
                 $this->setAction('index');
                 break;
 

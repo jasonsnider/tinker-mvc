@@ -10,7 +10,7 @@ namespace Tinker;
  */
 class Configure
 {
-    protected $vars = array();
+    protected static $vars = array();
     
     /**
      * Write a variable to the configuration array
@@ -18,9 +18,9 @@ class Configure
      * @param mixed $val
      * @return void
      */
-    public function write($var, $val)
+    public static function write($var, $val)
     {
-        $this->vars[$var] = $val;
+        static::$vars[$var] = $val;
     }
     
     /**
@@ -29,11 +29,11 @@ class Configure
      * @param string $var
      * @return mixed
      */
-    public function read($var = null)
+    public static function read($var = null)
     {
         if(empty($var)){
-            return $this->vars;
+            return static::$vars;
         }
-        return $this->vars[$var];
+        return static::$vars[$var];
     }
 }

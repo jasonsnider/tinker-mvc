@@ -47,6 +47,19 @@ class Theme implements Interfaces\Theme
      */
     public $Loader;
 
+
+    /**
+     * Holds the default theme
+     * @var string
+     */
+    private $theme;
+
+    /**
+     * Holds the default layout
+     * @var string
+     */
+    private $layout;
+    
     /**
      * Sets dependencies
      * 
@@ -60,19 +73,9 @@ class Theme implements Interfaces\Theme
         $this->Router = $Router;
         $this->View = $View;
         $this->Loader = $Loader;
+        $this->theme = \Tinker\Configure::read('theme');
+        $this->layout = \Tinker\Configure::read('layout');
     }
-
-    /**
-     * Holds the default theme
-     * @var string
-     */
-    private $theme = 'TinkerPlugin';
-
-    /**
-     * Holds the default layout
-     * @var string
-     */
-    private $layout = 'default';
 
     /**
      * Sets the theme 

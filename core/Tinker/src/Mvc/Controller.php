@@ -32,7 +32,7 @@ abstract class Controller implements Interfaces\Controller
      * @param object $Model
      * @retrun void
      */
-    public function __construct($Theme, $View, $Model)
+    public function __construct(Interfaces\Theme $Theme, Interfaces\View $View, $Model)
     {
         $this->setView($View);
         $this->setTheme($Theme);
@@ -58,7 +58,7 @@ abstract class Controller implements Interfaces\Controller
      * @param object $View
      * @retrun void
      */
-    public function setView($View)
+    public function setView(Interfaces\View $View)
     {
         $this->View = $View;
     }
@@ -69,7 +69,7 @@ abstract class Controller implements Interfaces\Controller
      * @param object $Theme
      * @retrun void
      */
-    public function setTheme($Theme)
+    public function setTheme(Interfaces\Theme $Theme)
     {
         $this->Theme = $Theme;
     }

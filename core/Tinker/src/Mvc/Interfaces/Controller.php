@@ -19,7 +19,7 @@ interface Controller
      * @param object $Model
      * @retrun void
      */
-    public function __construct($Theme, $View, $Model);
+    public function __construct(Theme $Theme, View $View, $Model);
 
     /**
      * A setter for Model objects
@@ -35,7 +35,7 @@ interface Controller
      * @param object $View
      * @retrun void
      */
-    public function setView($View);
+    public function setView(View $View);
 
     /**
      * A setter for $Theme
@@ -43,7 +43,7 @@ interface Controller
      * @param object $Theme
      * @retrun void
      */
-    public function setTheme($Theme);
+    public function setTheme(Theme $Theme);
 
     /**
      * Renders the view on shutdown

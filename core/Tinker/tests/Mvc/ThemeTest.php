@@ -8,22 +8,26 @@ class ThemeTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetters(){
 
-        $Theme = new \Tinker\Mvc\Theme('router', 'view', 'loader');
+        $Router = new \Tinker\Mvc\Router('/');
+        $Theme = new \Tinker\Mvc\Theme($Router, new \Tinker\Mvc\View($Router,'x', 'x'), 'loader');
         
-        $this->assertSame('router', $Theme->Router);
-        $this->assertSame('view', $Theme->View);
+        $this->assertInstanceOf('\Tinker\Mvc\Interfaces\Router', $Theme->Router);
+        $this->assertInstanceOf('\Tinker\Mvc\Interfaces\View', $Theme->View);
         $this->assertSame('loader', $Theme->Loader);
     }
     
     public function testSetTheme(){
-        $Theme = new \Tinker\Mvc\Theme('router', 'view', 'loader');
+        
+        $Router = new \Tinker\Mvc\Router('/');
+        $Theme = new \Tinker\Mvc\Theme($Router, new \Tinker\Mvc\View($Router,'x', 'x'), 'loader');
         
         $Theme->setTheme('Foo');
         $this->assertSame('Foo', $Theme->getTheme());
     }
     
     public function testSetLayout(){
-        $Theme = new \Tinker\Mvc\Theme('router', 'view', 'loader');
+        $Router = new \Tinker\Mvc\Router('/');
+        $Theme = new \Tinker\Mvc\Theme($Router, new \Tinker\Mvc\View($Router,'x', 'x'), 'loader');
         
         $Theme->setLayout('Bar');
         $this->assertSame('Bar', $Theme->getLayout());

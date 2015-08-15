@@ -44,7 +44,7 @@ class View implements Interfaces\View
      */
     public $Loader;
     
-    public function __construct($Router, $BuildTime, $Loader)
+    public function __construct(Interfaces\Router $Router, $BuildTime, $Loader)
     {
         $this->BuildTime = $BuildTime;
         $this->Router = $Router;

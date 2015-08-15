@@ -28,7 +28,16 @@ namespace Tinker\Mvc\Interfaces;
 interface Theme
 {
 
-
+    /**
+     * Sets dependencies
+     * 
+     * @param object $Router
+     * @param object $View
+     * @param object $Loader
+     * @return void
+     */
+    public function __construct(Router $Router, View $View, $Loader);
+            
     /**
      * Sets the layout
      * @use Set in a controller action

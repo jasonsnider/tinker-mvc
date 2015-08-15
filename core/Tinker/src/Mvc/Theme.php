@@ -55,7 +55,7 @@ class Theme implements Interfaces\Theme
      * @param object $Loader
      * @return void
      */
-    public function __construct($Router, $View, $Loader)
+    public function __construct(Interfaces\Router $Router, Interfaces\View $View, $Loader)
     {
         $this->Router = $Router;
         $this->View = $View;

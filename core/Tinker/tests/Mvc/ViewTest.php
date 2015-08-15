@@ -1,4 +1,5 @@
 <?php
+namespace Tinker;
 
 class ViewTest extends \PHPUnit_Framework_TestCase
 {
@@ -8,9 +9,9 @@ class ViewTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetters(){
 
-        $View = new \Tinker\Mvc\View('router', 'buildtime', 'loader');
+        $View = new \Tinker\Mvc\View(new Mvc\Router('/'), 'buildtime', 'loader');
         
-        $this->assertSame('router', $View->Router);
+        $this->assertInstanceOf('\Tinker\Mvc\Interfaces\Router', $View->Router);
         $this->assertSame('buildtime', $View->BuildTime);
         $this->assertSame('loader', $View->Loader);
     }

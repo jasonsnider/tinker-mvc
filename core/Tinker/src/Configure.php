@@ -10,7 +10,7 @@ namespace Tinker;
  */
 class Configure
 {
-    protected static $vars = array();
+    private static $vars = array();
     
     /**
      * Write a variable to the configuration array
@@ -20,7 +20,20 @@ class Configure
      */
     public static function write($var, $val)
     {
-        self::$vars[$var] = $val;
+        if(empty(self::$vars[$var])){
+            
+            self::$vars[$var] = $val;
+            
+        }else{
+            
+            $value = self::$vars[$var];
+            
+            throw new \Exception(
+                "Tinker: Cannot redeclare configuration variable {{$var}}"
+            );
+                
+        }
+
     }
     
     /**

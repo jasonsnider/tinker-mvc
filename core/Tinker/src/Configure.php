@@ -20,7 +20,7 @@ class Configure
      */
     public static function write($var, $val)
     {
-        static::$vars[$var] = $val;
+        self::$vars[$var] = $val;
     }
     
     /**
@@ -32,8 +32,8 @@ class Configure
     public static function read($var = null)
     {
         if(empty($var)){
-            return static::$vars;
+            return self::$vars;
         }
-        return static::$vars[$var];
+        return self::$vars[$var];
     }
 }

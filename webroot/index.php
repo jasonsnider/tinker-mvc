@@ -31,7 +31,7 @@ require ROOT . DS . 'config' . DS . 'bootstrap.php';
 // Analyze the pretty url and route the requests
 // Instantiate controllers, views and themes (or use auto laoding?)
 
-$Router = new Mvc\Router($_SERVER['REQUEST_URI']);
+$Router = new Mvc\Router($Configure, $_SERVER['REQUEST_URI']);
 
 $View = new \Tinker\Mvc\View($Router, $BuildTime, $Loader);
 $Theme = new \Tinker\Mvc\Theme($Router, $View, $Loader);

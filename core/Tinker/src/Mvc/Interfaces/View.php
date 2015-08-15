@@ -2,12 +2,12 @@
 /**
  */
 
-namespace Tinker\Mvc;
+namespace Tinker\Mvc\Interfaces;
 
 /**
  * View Class
  */
-interface ViewInterface
+interface View
 {
 
     /**

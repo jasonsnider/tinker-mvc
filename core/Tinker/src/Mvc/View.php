@@ -16,7 +16,7 @@ namespace Tinker\Mvc;
  * All properties of view SHOULD have public exposure. This will allow us to work with a
  * given instance from inside of theme and view files.
  */
-class View implements ViewInterface
+class View implements Interfaces\View
 {
 
     /**

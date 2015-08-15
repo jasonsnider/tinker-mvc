@@ -8,7 +8,7 @@ namespace Tinker\Mvc;
 /**
  * Maps a URI to an MVC path by parsing out the URI and setting the target plugin, controller, action and parameters
  */
-class Router implements RouterInterface
+class Router implements Interfaces\Router
 {
 
     use \Tinker\Utility\Inflector;
@@ -30,7 +30,7 @@ class Router implements RouterInterface
      * @var string 
      */
     private $action = 'index';
-
+    
     /**
      * Holds the current list of params
      * @var array
@@ -45,8 +45,9 @@ class Router implements RouterInterface
      * @param string $requestUri Represents the URI to be parsed
      * @return void
      */
-    public function __construct($requestUri)
+    public function __construct($Configure, $requestUri)
     {
+        $this->Configure = $Configure;
         $this->parseUri($requestUri);
     }
 
@@ -69,8 +70,8 @@ class Router implements RouterInterface
         switch ($uriLegnth)
         {
             case 0:
-                $this->setPlugin($this->plugin);
-                $this->setController($this->controller);
+                $this->setPlugin($this->Configure->read('plugin'));
+                $this->setController($this->Configure->read('controller'));
                 $this->setAction('index');
                 break;
 

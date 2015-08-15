@@ -26,7 +26,7 @@ namespace Tinker\Mvc;
  * 			$this->Theme->setLayout('new_bar');
  * 		}	
  */
-class Theme implements ThemeInterface
+class Theme implements Interfaces\Theme
 {
     
     /**

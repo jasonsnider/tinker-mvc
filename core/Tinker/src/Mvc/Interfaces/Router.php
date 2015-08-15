@@ -3,12 +3,12 @@
  * Maps a URI to an MVC path by parsing out the URI and setting the target plugin, controller, action and parameters
  */
 
-namespace Tinker\Mvc;
+namespace Tinker\Mvc\Interfaces;
 
 /**
  * Maps a URI to an MVC path by parsing out the URI and setting the target plugin, controller, action and parameters
  */
-interface RouterInterface
+interface Router
 {
 
     /**

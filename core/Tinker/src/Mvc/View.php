@@ -61,6 +61,8 @@ class View implements Interfaces\View
         $controller = $this->Router->getController();
         $action = $this->Router->getAction();
         $paths = $this->Loader->getPrefixes();
+        
+        
 
         for ($i = 0; $i < count($paths["{$plugin}\\"]); $i++)
         {

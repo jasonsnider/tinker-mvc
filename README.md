@@ -5,7 +5,8 @@ An experimental framework to help me better understand various design concepts.
 
 Goals
 ------
-* Fast and Lightweight
+* Fast, Lightweight, Minimalist
+* PSR Compliance 
 * DI/IoC
 * MVC
 * Pluggable

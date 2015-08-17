@@ -2,6 +2,7 @@
 /**
  * TinkerPlugin Model
  */
+
 namespace Application\Model;
 
 /**
@@ -12,11 +13,14 @@ namespace Application\Model;
  */
 class Application
 {
+
     /**
      * Returns a welcom message
      * @return string
      */
-    public function welcome(){
+    public function welcome()
+    {
         return 'Welcome to TinkerMVC';
-    } 
+    }
+
 }

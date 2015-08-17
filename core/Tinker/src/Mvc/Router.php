@@ -30,7 +30,7 @@ class Router implements Interfaces\Router
      * @var string 
      */
     private $action = 'index';
-    
+
     /**
      * Holds the current list of params
      * @var array

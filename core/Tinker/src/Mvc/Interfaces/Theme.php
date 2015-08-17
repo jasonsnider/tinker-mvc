@@ -37,7 +37,7 @@ interface Theme
      * @return void
      */
     public function __construct(Router $Router, View $View, $Loader);
-            
+
     /**
      * Sets the layout
      * @use Set in a controller action
@@ -63,5 +63,4 @@ interface Theme
      * @return string Echoing this string will render a webpage
      */
     public function render($View);
-
 }

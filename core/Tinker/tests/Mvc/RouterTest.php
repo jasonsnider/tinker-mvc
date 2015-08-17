@@ -44,7 +44,7 @@ class RouterTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertSame(array('named' => array(), 'passed' => array(0 => 'param')), $this->MockUri5->getParams());
         $this->assertSame(
-                array(
+            array(
             'named' => array(
                 'named1' => '1',
                 'named2' => '2'
@@ -54,7 +54,7 @@ class RouterTest extends \PHPUnit_Framework_TestCase
                 1 => 'pass2',
                 2 => 'pass3'
             )
-                ), $this->MockUri6->getParams()
+            ), $this->MockUri6->getParams()
         );
     }
 

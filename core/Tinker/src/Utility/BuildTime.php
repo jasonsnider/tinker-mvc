@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Approximates the time it takes the webserver to build a page.
  */
@@ -21,7 +20,7 @@ class BuildTime
      * @var float 
      */
     private $start;
-    
+
     /**
      * Holds the time at which the end method is called
      * 
@@ -60,7 +59,7 @@ class BuildTime
     {
         return $this->start;
     }
-    
+
     /**
      * A setter for $finish
      * 
@@ -70,7 +69,7 @@ class BuildTime
     public function setFinish($microtime)
     {
         $time = explode(' ', $microtime);
-        $this->finish = $time[1] + $time[0]; 
+        $this->finish = $time[1] + $time[0];
     }
 
     /**

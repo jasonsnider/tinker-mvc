@@ -11,7 +11,7 @@ interface View
 {
 
     public function __construct(Router $Router, $BuildTime, $Loader);
-            
+
     /**
      * Sets the path for from which we are to render a view
      * @return type
@@ -23,5 +23,4 @@ interface View
      * @return string
      */
     public function getOutput();
-
 }

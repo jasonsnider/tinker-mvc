@@ -1,5 +1,4 @@
 <?php
-
 /**
  */
 
@@ -28,25 +27,24 @@ namespace Tinker\Mvc;
  */
 class Theme implements Interfaces\Theme
 {
-    
+
     /**
      * Router
      * @var object
      */
     public $Router;
-    
+
     /**
      * View
      * @var object
      */
     public $View;
-    
-    /** 
+
+    /**
      * Loader
      * @var object
      */
     public $Loader;
-
 
     /**
      * Holds the default theme
@@ -59,7 +57,7 @@ class Theme implements Interfaces\Theme
      * @var string
      */
     private $layout;
-    
+
     /**
      * Sets dependencies
      * 
@@ -132,7 +130,7 @@ class Theme implements Interfaces\Theme
         for ($i = 0; $i < count($paths["{$theme}\\"]); $i++)
         {
             $check = $paths["{$theme}\\"][$i] .
-                    'View' . DS . 'layouts' . DS . $layout . '.php';
+                'View' . DS . 'layouts' . DS . $layout . '.php';
 
             if (is_file($check))
             {

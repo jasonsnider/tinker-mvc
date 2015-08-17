@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Unit tests and mock objects for the IoCRegistry class
  */

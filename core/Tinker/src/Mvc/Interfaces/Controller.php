@@ -2,6 +2,7 @@
 /**
  * Controller.php
  */
+
 namespace Tinker\Mvc\Interfaces;
 
 /**
@@ -9,7 +10,6 @@ namespace Tinker\Mvc\Interfaces;
  */
 interface Controller
 {
-
 
     /**
      * Sets dependencies on startup
@@ -52,5 +52,4 @@ interface Controller
      * @retrun void
      */
     public function __destruct();
-
 }

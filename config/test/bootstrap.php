@@ -22,24 +22,24 @@ if (!defined('ROOT'))
 
 //Load and instantiate, loader and register the auto loader.
 require ROOT . DS .
-        'core' . DS .
-        'vendor' . DS .
-        'PhpFig' . DS .
-        'src' . DS .
-        'Loader.php';
+    'core' . DS .
+    'vendor' . DS .
+    'PhpFig' . DS .
+    'src' . DS .
+    'Loader.php';
 
 $Loader = new \PhpFig\Loader;
 $Loader->register();
 
 //Autoload all files in the Tinker namesspace
 $Loader->addNamespace(
-        "\MvcInterface", ROOT . DS . 'core' . DS . 'Tinker' . DS . 'src' . DS . 'Mvc' . DS . 'Interfaces'
+    "\MvcInterface", ROOT . DS . 'core' . DS . 'Tinker' . DS . 'src' . DS . 'Mvc' . DS . 'Interfaces'
 );
 
 
 //Autoload all files in the Tinker namesspace
 $Loader->addNamespace(
-        "\Tinker", ROOT . DS . 'core' . DS . 'Tinker' . DS . 'src'
+    "\Tinker", ROOT . DS . 'core' . DS . 'Tinker' . DS . 'src'
 );
 
 //Fetch DI containers

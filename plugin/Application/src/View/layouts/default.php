@@ -39,11 +39,11 @@
     </nav>
 
     <?php echo $View->getOutput(); ?>
-      
+
     <div class="container">
-        <footer class="text-center">
-            <?php echo 'Hi, it took Apache ' . round($View->BuildTime->end(microtime()), 5) . ' seconds to render this page.'; ?>
-        </footer>
+      <footer class="text-center">
+        <?php echo 'Hi, it took Apache ' . round($View->BuildTime->end(microtime()), 5) . ' seconds to render this page.'; ?>
+      </footer>
     </div>
     <!-- Bootstrap core JavaScript
     ================================================== -->

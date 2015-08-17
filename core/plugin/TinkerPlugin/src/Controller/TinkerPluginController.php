@@ -2,6 +2,7 @@
 /**
  * TinkerPlugin Controller
  */
+
 namespace TinkerPlugin\Controller;
 
 /**
@@ -20,7 +21,7 @@ class TinkerPluginController extends \Tinker\Mvc\Controller
      * @return void
      */
     public function index()
-    { 
+    {
         $this->View->vars['welcome'] = $this->TinkerPlugin->welcome();
     }
 

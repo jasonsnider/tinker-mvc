@@ -1,5 +1,4 @@
 <?php
-
 /**
  * TinkerMVC (https://github.com/jasonsnider/tinker-mvc)
  * 
@@ -25,25 +24,25 @@ class View implements Interfaces\View
      * @var array
      */
     public $vars;
-    
+
     /**
      * Holds the BuildTime object
      * @var object 
      */
     public $BuildTime;
-    
+
     /**
      * Holds the Router object
      * @var object
      */
     public $Router;
-    
+
     /**
      * Holds the Loader object
      * @var object
      */
     public $Loader;
-    
+
     public function __construct(Interfaces\Router $Router, $BuildTime, $Loader)
     {
         $this->BuildTime = $BuildTime;
@@ -61,15 +60,15 @@ class View implements Interfaces\View
         $controller = $this->Router->getController();
         $action = $this->Router->getAction();
         $paths = $this->Loader->getPrefixes();
-        
-        
+
+
 
         for ($i = 0; $i < count($paths["{$plugin}\\"]); $i++)
         {
             $check = $paths["{$plugin}\\"][$i] .
-                    'View' . DS .
-                    $controller . DS .
-                    $action . '.php';
+                'View' . DS .
+                $controller . DS .
+                $action . '.php';
 
             if (is_file($check))
             {
@@ -93,5 +92,5 @@ class View implements Interfaces\View
         ob_end_clean();
         return $output;
     }
-    
+
 }

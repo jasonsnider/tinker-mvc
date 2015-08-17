@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Inflector.php
  */

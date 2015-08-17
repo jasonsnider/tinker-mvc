@@ -6,6 +6,7 @@
  * use that. If you prefer XML, json or flat files, by all me ans go that
  * route. My advice is to write an intereface for each model, then implement that.
  */
+
 namespace Tinker\Mvc;
 
 /**
@@ -13,4 +14,7 @@ namespace Tinker\Mvc;
  * use that. If you prefer XML, json or flat files, by all me ans go that
  * route. My advice is to write an intereface for each model, then implement that. 
  */
-abstract class Model{}
+abstract class Model
+{
+
+}

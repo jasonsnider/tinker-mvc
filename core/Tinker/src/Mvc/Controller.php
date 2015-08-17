@@ -2,6 +2,7 @@
 /**
  * Controller.php
  */
+
 namespace Tinker\Mvc;
 
 /**
@@ -46,7 +47,7 @@ abstract class Controller implements Interfaces\Controller
      * @retrun void
      */
     public function setModel($Model)
-    {    
+    {
         $rc = new \ReflectionClass($Model);
         $name = $rc->getShortName();
         $this->{$name} = $Model;

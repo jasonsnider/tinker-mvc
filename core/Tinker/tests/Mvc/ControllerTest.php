@@ -36,39 +36,8 @@ class ControllerTest extends \PHPUnit_Framework_TestCase
 
     public function __construct()
     {
-
-        //Get the autoloader going
-        $Loader = new \PhpFig\Loader;
-        $Loader->register();
-
-        //Autoload all files in the Tinker namesspace
-        $Loader->addNamespace(
-            "\Tinker", ROOT . DS . 'core' . DS . 'Tinker' . DS . 'src'
-        );
-
-        //Mock index.php
-        $BuildTime = new \Tinker\Utility\BuildTime(microtime());
-        $Router = new \Tinker\Mvc\Router('/tinker_plugin/tinker_plugin/index/e1/e2/e3/e4:1');
-        $View = new \Tinker\Mvc\View($Router, $BuildTime, $Loader);
-        $Theme = new \Tinker\Mvc\Theme($Router, $View, $Loader);
-
-        $plugin = $Router->getPlugin(true);
-        $controller = $Router->getPlugin(true) . 'Controller';
-        $this->action = $Router->getAction();
-
-        //Autoload all plugins
-        $Loader->addNamespace(
-            $plugin, ROOT . DS . 'core' . DS . 'plugin' . DS . $plugin . DS . 'src'
-        );
-
-        $Loader->addNamespace(
-            $plugin, ROOT . DS . 'plugin' . DS . $plugin . DS . 'src'
-        );
-
-        $this->class = "\\{$plugin}\\Controller\\{$controller}";
-        $model = "\\{$plugin}\\Model\\{$plugin}";
-
-        $this->Controller = new $this->class($Theme, $View, new $model());
+        $this->Router = \Tinker\Di\IoCRegistry::resolve('Router');
+        $this->Controller = \Tinker\Di\IoCRegistry::resolve('TinkerPluginController');
     }
 
     public function testDestructRendersContent()
@@ -76,7 +45,7 @@ class ControllerTest extends \PHPUnit_Framework_TestCase
 
         ob_start();
 
-        $this->Controller->{$this->action}();
+        $this->Controller->{$this->Router->getAction()}();
         $this->Controller->__destruct();
 
         $output = ob_get_contents();

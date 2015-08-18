@@ -48,7 +48,13 @@ class Configure
         {
             return self::$vars;
         }
-        return self::$vars[$var];
+
+        if(array_key_exists($var, self::$vars))
+        {
+            return self::$vars[$var];
+        }
+        
+        return null;
     }
 
 }

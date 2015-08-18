@@ -93,7 +93,7 @@ class IoCRegistry implements IoCRegistryInterface
             return $obj();
         }
 
-        throw new \Exception('Container not found.');
+        throw new \Exception("Tinker: Container {{$name}} not found.");
     }
 
 }

@@ -31,19 +31,13 @@ require ROOT . DS .
 $Loader = new \PhpFig\Loader;
 $Loader->register();
 
-//Autoload all files in the Tinker namesspace
+//Autoload all files in the Tinker namespace
 $Loader->addNamespace(
     "\MvcInterface", ROOT . DS . 'core' . DS . 'Tinker' . DS . 'src' . DS . 'Mvc' . DS . 'Interfaces'
 );
 
 
-//Autoload all files in the Tinker namesspace
+//Autoload all files in the Tinker namespace
 $Loader->addNamespace(
     "\Tinker", ROOT . DS . 'core' . DS . 'Tinker' . DS . 'src'
 );
-
-//Fetch DI containers
-require ROOT . DS . 'config' . DS . 'configure.php';
-
-//Fetch DI containers
-//require ROOT . DS . 'config' . DS . 'containers.php';

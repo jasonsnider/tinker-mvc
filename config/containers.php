@@ -1,14 +1,18 @@
 <?php
 /**
- * A configuration file for DI containers.
+ * A configuration file for DI containers
  */
 
 namespace Tinker;
 
-//Add Router
-Di\IoCRegistry::register('Router', function() {
-    $Router = new Mvc\Router($_SERVER['REQUEST_URI']);
-    return $Router;
-});
-
 ///// Custom Containers //////
+
+Di\IoCRegistry::register('ApplicationController', function() use ($plugin, $controller, $model, $Theme, $View) {
+    
+    $class = "\\{$plugin}\\Controller\\{$controller}";
+    $Model = "\\{$plugin}\\Model\\{$model}";
+
+    $Controller = new $class($Theme, $View, new $Model());
+    
+    return $Controller;
+});

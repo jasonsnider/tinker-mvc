@@ -23,7 +23,7 @@ class MockController extends \Tinker\Mvc\Controller
 
 }
 
-class MockModel extends \Tinker\Mvc\Model
+class MockModel
 {
 
 }

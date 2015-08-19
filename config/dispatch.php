@@ -50,7 +50,7 @@ $Theme = Di\IoCRegistry::resolve('Theme');
 
 $plugin = $Router->getPlugin(true);
 $model = $Router->getPlugin(true);
-$controller = $Router->getPlugin(true) . 'Controller';
+$controller = $Router->getController(true) . 'Controller';
 $action = $Router->getAction();
 
 //Autoload all plugins

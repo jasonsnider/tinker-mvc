@@ -108,16 +108,25 @@ require ROOT . DS . 'config' . DS . 'dispatch.php';
 //Load custom containers
 require ROOT . DS . 'config' . DS . 'containers.php';
 
+//Proof of concept for accessing assets from a plugin
+if(is_file(ROOT . DS . 'plugin' . DS . $plugin . DS . 'src' . DS . 'webroot' . DS . strtolower($Router->getController(true)) . DS . $action)){
+    ob_start();
+    require ROOT . DS . 'plugin' . DS . $plugin . DS . 'src' . DS .  DS . 'webroot' . DS . strtolower($Router->getController(true)) . DS . $action;
+    $output = ob_get_contents();
+    ob_end_clean();
+    echo $output;
+    die();
+}
+
 //Load the MVC stack, if a specific plugin has not been defined as a container
 //MVC conventions will be used to load the MVC stack
 if(Di\IoCRegistry::registered($controller)){
     $Controller = Di\IoCRegistry::resolve($controller);
-    $Controller->{$action}();
 }else{
     $class = "\\{$plugin}\\Controller\\{$controller}";
     $Model = "\\{$plugin}\\Model\\{$model}";
 
     $Controller = new $class($Theme, $View, new $Model());
-    $Controller->{$action}();
 }
 
+$Controller->{$action}();

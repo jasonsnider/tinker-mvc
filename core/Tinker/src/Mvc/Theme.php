@@ -126,7 +126,7 @@ class Theme implements Interfaces\Theme
         $layout = $this->getLayout();
 
         $paths = $this->Loader->getPrefixes();
-
+        //var_dump($paths);
         for ($i = 0; $i < count($paths["{$theme}\\"]); $i++)
         {
             $check = $paths["{$theme}\\"][$i] .

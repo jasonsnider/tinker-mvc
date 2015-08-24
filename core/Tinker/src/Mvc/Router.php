@@ -104,11 +104,11 @@ class Router implements Interfaces\Router
     }
 
     /**
-     * If the requested URL is a webroot asset living in a plugin (.css, .js,
-     * .jpeg, .doc, etc ) then that file is written to and echoed from the
-     * buffer and all execution halts.
-     *
-     * @return void
+     * Returns a file path if a given route maps to a plugins webroot
+     * directory. Retruns false if the given route does not map to a webroot
+     * asset.
+     * 
+     * @return mixed
      */
     public function checkAsset($Loader)
     {
@@ -148,7 +148,14 @@ class Router implements Interfaces\Router
         return false;
     }
 
-
+    /**
+     * If the requested URL is a webroot asset living in a plugin (.css, .js,
+     * .jpeg, .doc, etc ) then that file is written to and echoed from the
+     * buffer and all execution halts.
+     *
+     * @param string $asset
+     * @return mixed
+     */
     public function fetchAsset($asset)
     {
 

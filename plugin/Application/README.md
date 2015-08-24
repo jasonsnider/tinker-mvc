@@ -1,4 +1,4 @@
-TinkerPlugin
-=============
+Application
+============
 
-This is an example of a plugin used for unit testing.
+The default plugin for all new TinkerMVC applications.

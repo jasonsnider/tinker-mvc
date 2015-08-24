@@ -5,7 +5,8 @@
 
 namespace Tinker;
 
-//Router
+//Router - if a plugin asset is requested, the contents will be written to
+//and read from the buffer and execution will be halted.
 Di\IoCRegistry::register('Router', function(){
     $Router = new Mvc\Router($_SERVER['REQUEST_URI']);
     return $Router;

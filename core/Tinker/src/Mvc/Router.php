@@ -41,8 +41,10 @@ class Router implements Interfaces\Router
     );
 
     /**
-     * Sets the URI for parsing
+     * Sets the URI for parsing or retrives an asset file.
+     *
      * @param string $requestUri Represents the URI to be parsed
+     * @param object $Loader
      * @return void
      */
     public function __construct($requestUri)
@@ -61,7 +63,6 @@ class Router implements Interfaces\Router
      */
     public function parseUri($requestUri)
     {
-
         //Parse each URI segment into it's own element then remove all elements with an empty value.
         $uriSegments = array_filter(explode('/', $requestUri));
         $uriLegnth = count($uriSegments);
@@ -100,6 +101,77 @@ class Router implements Interfaces\Router
                 $this->setParams(array_slice($uriSegments, 3));
                 break;
         }
+    }
+
+    /**
+     * If the requested URL is a webroot asset living in a plugin (.css, .js,
+     * .jpeg, .doc, etc ) then that file is written to and echoed from the
+     * buffer and all execution halts.
+     *
+     * @return void
+     */
+    public function checkAsset($Loader)
+    {
+        //The plugin name as it appears on the servers file path
+        $plugin = $this->getPlugin(true);
+
+        //The requested action, for assets this will be the file name
+        $action = $this->getAction();
+
+        //the controller name as it appears in the url. If it is an asset it
+        // will be jc, css, img, doc, etc...
+        $controller = $this->getController(false);
+
+        //All registered auto loader prefixes
+        $paths = $Loader->getPrefixes();
+
+        //Holds an asset's file path. If mulitpe paths contain an asset of the
+        //same name, the last path containing the asset wins
+        $asset = false;
+
+        if(!empty($paths["{$plugin}\\"])){
+            for ($i = 0; $i < count($paths["{$plugin}\\"]); $i++)
+            {
+                $check = $paths["{$plugin}\\"][$i] . DS . 'webroot' . DS . $controller . DS . $action;
+
+                if (is_file($check))
+                {
+                    $asset = $check;
+                }
+            }
+        }
+
+        if(is_file($asset)){
+            return $asset;
+        }
+
+        return false;
+    }
+
+
+    public function fetchAsset($asset)
+    {
+
+        //If the request is a real file from the requested plugin
+        if(is_file($asset)){
+            //Start the buffer
+            ob_start();
+
+            //Grab the file and write it to the buffer
+            require $asset;
+
+            //Write the buffer to a variable
+            $output = ob_get_contents();
+
+            //Clean the buffer
+            ob_end_clean();
+
+            //echo the buffer and halt execution
+            echo $output;
+            die();
+        }
+
+        return false;
     }
 
     /**

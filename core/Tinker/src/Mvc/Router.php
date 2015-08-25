@@ -132,7 +132,7 @@ class Router implements Interfaces\Router
         if(!empty($paths["{$plugin}\\"])){
             for ($i = 0; $i < count($paths["{$plugin}\\"]); $i++)
             {
-                $check = $paths["{$plugin}\\"][$i] . DS . 'webroot' . DS . $controller . DS . $action;
+                $check = $paths["{$plugin}\\"][$i] . 'webroot' . DS . $controller . DS . $action;
 
                 if (is_file($check))
                 {

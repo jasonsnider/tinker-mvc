@@ -108,6 +108,42 @@ require ROOT . DS . 'core' . DS . 'test' . DS . 'dispatch.php';
 //Load custom containers
 require ROOT . DS . 'core' . DS . 'test' . DS . 'containers.php';
 
+/**
+ * A shamfull hack for passing and instance into a unit test
+ */
+class TestGlobals
+{
+
+    /**
+     * Holds an array of global variables
+     * @var array
+     */
+    private static $globals = array();
+
+    /**
+     *
+     * @param string $key
+     * @param mixed $value
+     * @return void
+     */
+    public static function setGlobal($key, $value)
+    {
+        static::$globals[$key] = $value;
+    }
+
+    /**
+     *
+     * @param string $key
+     * @return mixed
+     */
+    public static function getGlobal($key)
+    {
+        return static::$globals[$key];
+    }
+}
+
+TestGlobals::setGlobal('Loader', $Loader);
+
 /*
 //Load the MVC stack, if a specific plugin has not been defined as a container
 //MVC conventions will be used to load the MVC stack

@@ -175,7 +175,7 @@ class Router implements Interfaces\Router
 
             //echo the buffer and halt execution
             echo $output;
-            die();
+            //die();
         }
 
         return false;

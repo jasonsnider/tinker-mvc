@@ -17,8 +17,7 @@ Goals
 Set Up
 ------
 
-Set a vhost so that it will point to the webroot directory.
-
+Configure apache so that it will point to the webroot directory.
 
 ### Dispatching and Routing. 
 

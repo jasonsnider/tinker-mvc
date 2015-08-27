@@ -108,17 +108,25 @@ require ROOT . DS . 'config' . DS . 'dispatch.php';
 //Load custom containers
 require ROOT . DS . 'config' . DS . 'containers.php';
 
-$Router->fetchAsset($Router->checkAsset($Loader));
+if (!empty($Router->checkAsset($Loader))):
+    $Router->fetchAsset($Router->checkAsset($Loader));
+else:
+    //Load the MVC stack, if a specific plugin has not been defined as a container
+    //MVC conventions will be used to load the MVC stack
+    if (Di\IoCRegistry::registered($controller))
+    {
+        $Controller = Di\IoCRegistry::resolve($controller);
+    } else
+    {
+        $class = "\\{$plugin}\\Controller\\{$controller}";
+        $Model = "\\{$plugin}\\Model\\{$model}";
 
-//Load the MVC stack, if a specific plugin has not been defined as a container
-//MVC conventions will be used to load the MVC stack
-if(Di\IoCRegistry::registered($controller)){
-    $Controller = Di\IoCRegistry::resolve($controller);
-}else{
-    $class = "\\{$plugin}\\Controller\\{$controller}";
-    $Model = "\\{$plugin}\\Model\\{$model}";
+        $Controller = new $class($Theme, $View, new $Model());
+    }
 
-    $Controller = new $class($Theme, $View, new $Model());
-}
+    $Controller->{$action}();
+endif;
 
-$Controller->{$action}();
+
+
+

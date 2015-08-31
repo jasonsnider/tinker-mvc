@@ -18,13 +18,16 @@ define('DS', DIRECTORY_SEPARATOR);
 /**
  * Defines a standard ROOT file path
  */
-define('ROOT', dirname(dirname(__FILE__)));
+define('ROOT', dirname(dirname(dirname(__FILE__))));
 
+define('CORE', ROOT . DS . 'core');
+
+define('APP', ROOT . DS . 'app');
 
 // Build time
 // Record the current microtime, rendering the view will capture the diff
 // between now and the ~end of rendering
-require dirname(dirname(__FILE__)) . DS . 'core' . DS . 'Tinker' . DS .
+require CORE . DS . 'Tinker' . DS .
     'src' . DS . 'Utility' . DS . 'BuildTime.php';
 
 $BuildTime = new Utility\BuildTime(microtime());
@@ -97,16 +100,16 @@ $controller = null;
 $action = null;
 
 //Bootstrap the application
-require ROOT . DS . 'config' . DS . 'bootstrap.php';
+require APP . DS . 'config' . DS . 'bootstrap.php';
 
 //Load the runtime configuration
-require ROOT . DS . 'config' . DS . 'configure.php';
+require APP . DS . 'config' . DS . 'configure.php';
 
 //Begin dispatch
-require ROOT . DS . 'config' . DS . 'dispatch.php';
+require APP . DS . 'config' . DS . 'dispatch.php';
 
 //Load custom containers
-require ROOT . DS . 'config' . DS . 'containers.php';
+require APP . DS . 'config' . DS . 'containers.php';
 
 if (!empty($Router->checkAsset($Loader))):
     $Router->fetchAsset($Router->checkAsset($Loader));

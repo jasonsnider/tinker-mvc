@@ -20,8 +20,14 @@ define('DS', DIRECTORY_SEPARATOR);
  */
 define('ROOT', dirname(dirname(dirname(__FILE__))));
 
+/**
+ * Defines a standard path to the tinker core lib
+ */
 define('CORE', ROOT . DS . 'core');
 
+/**
+ * Defines a standard path to application files
+ */
 define('APP', ROOT . DS . 'app');
 
 // Build time

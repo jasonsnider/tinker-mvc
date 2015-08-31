@@ -22,6 +22,7 @@ class TinkerPluginController extends \Tinker\Mvc\Controller
      */
     public function index()
     {
+        $this->Theme->setTheme('TinkerPlugin');
         $this->View->vars['welcome'] = $this->TinkerPlugin->welcome();
     }
 

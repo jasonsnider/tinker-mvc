@@ -33,17 +33,16 @@ abstract class Controller implements Interfaces\Controller
      * @param object $Model
      * @retrun void
      */
-    public function __construct(Interfaces\Theme $Theme, Interfaces\View $View, $Model)
+    public function __construct(Interfaces\Theme $Theme, Interfaces\View $View)
     {
         $this->setView($View);
         $this->setTheme($Theme);
-        $this->setModel($Model);
     }
 
     /**
      * A setter for Model objects
      * 
-     * @param object $model
+     * @param object $Model
      * @retrun void
      */
     public function setModel($Model)

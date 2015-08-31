@@ -19,7 +19,7 @@ interface Controller
      * @param object $Model
      * @retrun void
      */
-    public function __construct(Theme $Theme, View $View, $Model);
+    public function __construct(Theme $Theme, View $View);
 
     /**
      * A setter for Model objects

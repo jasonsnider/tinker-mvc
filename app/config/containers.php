@@ -12,7 +12,8 @@ Di\IoCRegistry::register('ApplicationController', function() use ($plugin, $cont
     $class = "\\{$plugin}\\Controller\\{$controller}";
     $Model = "\\{$plugin}\\Model\\{$model}";
 
-    $Controller = new $class($Theme, $View, new $Model());
+    $Controller = new $class($Theme, $View);
+    $Controller->setModel(new $Model());
     
     return $Controller;
 });

@@ -130,7 +130,8 @@ else:
         $class = "\\{$plugin}\\Controller\\{$controller}";
         $Model = "\\{$plugin}\\Model\\{$model}";
 
-        $Controller = new $class($Theme, $View, new $Model());
+        $Controller = new $class($Theme, $View);
+        $Controller->setModel(new $Model());
     }
 
     $Controller->{$action}();

@@ -10,7 +10,7 @@ namespace Application\Controller;
  * 
  * Just a mock up of a controller
  */
-class ApplicationController extends \Tinker\Mvc\Controller
+class ApplicationController extends \Main\Controller\AppController
 {
 
     /**

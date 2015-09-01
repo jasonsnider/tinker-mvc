@@ -162,16 +162,18 @@ $action = $Router->getAction();
 
 //Autoload all plugins
 $Loader->addNamespace(
-    $plugin, CORE . DS . 'plugin' . DS . $plugin . DS . 'src'
-);
-
-
-$Loader->addNamespace(
-    $plugin, APP . DS . $plugin . DS . 'src'
+    $plugin,
+    CORE . DS . 'plugin' . DS . $plugin . DS . 'src'
 );
 
 $Loader->addNamespace(
-    $plugin, APP . DS . 'plugin' . DS . $plugin . DS . 'src'
+    $plugin,
+    APP . DS . 'plugin' . DS . $plugin . DS . 'src'
+);
+
+$Loader->addNamespace(
+    'Main',
+    APP . DS . 'Main' . DS . 'src'
 );
 
 //Load custom containers

@@ -165,6 +165,11 @@ $Loader->addNamespace(
     $plugin, CORE . DS . 'plugin' . DS . $plugin . DS . 'src'
 );
 
+
+$Loader->addNamespace(
+    $plugin, APP . DS . $plugin . DS . 'src'
+);
+
 $Loader->addNamespace(
     $plugin, APP . DS . 'plugin' . DS . $plugin . DS . 'src'
 );

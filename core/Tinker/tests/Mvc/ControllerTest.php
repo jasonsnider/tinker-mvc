@@ -1,9 +1,8 @@
 <?php
-
 /**
  * Mock the buildTime object
  */
-class MockController extends \Tinker\Mvc\Controller
+class MockController extends \Main\Controller\AppController
 {
 
     public function getTheme()
@@ -23,11 +22,14 @@ class MockController extends \Tinker\Mvc\Controller
 
 }
 
-class MockModel
-{
+/**
+ * A mock model
+ */
+class MockModel{}
 
-}
-
+/**
+ * Controller Tests
+ */
 class ControllerTest extends \PHPUnit_Framework_TestCase
 {
 
@@ -71,14 +73,7 @@ class ControllerTest extends \PHPUnit_Framework_TestCase
     public function testSetters()
     {
 
-        //Get the autoloader going
-        $Loader = new \PhpFig\Loader;
-        $Loader->register();
-
-        //Autoload all files in the Tinker namesspace
-        $Loader->addNamespace(
-            "\Tinker", ROOT . DS . 'core' . DS . 'Tinker' . DS . 'src'
-        );
+        $Loader  = \Tinker\TestGlobals::getGlobal('Loader');
 
         //Mock index.php
         $BuildTime = new \Tinker\Utility\BuildTime(microtime());

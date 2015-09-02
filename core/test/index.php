@@ -20,11 +20,20 @@ define('DS', DIRECTORY_SEPARATOR);
  */
 define('ROOT', dirname(dirname(dirname(__FILE__))));
 
+/**
+ * Defines a standard path to the tinker core lib
+ */
+define('CORE', ROOT . DS . 'core');
+
+/**
+ * Defines a standard path to application files
+ */
+define('APP', ROOT . DS . 'app');
 
 // Build time
 // Record the current microtime, rendering the view will capture the diff
 // between now and the ~end of rendering
-require ROOT . DS . 'core' . DS . 'Tinker' . DS .
+require CORE . DS . 'Tinker' . DS .
     'src' . DS . 'Utility' . DS . 'BuildTime.php';
 
 $BuildTime = new Utility\BuildTime(microtime());
@@ -96,20 +105,101 @@ $controller = null;
  */
 $action = null;
 
+//Load and instantiate, loader and register the auto loader.
+require CORE . DS .
+    'vendor' . DS .
+    'PhpFig' . DS .
+    'src' . DS .
+    'Loader.php';
+
+$Loader = new \PhpFig\Loader;
+$Loader->register();
+
+//Autoload all files in the Tinker namesspace
+$Loader->addNamespace(
+    "\MvcInterface", ROOT . DS . 'core' . DS . 'Tinker' . DS . 'src' . DS . 'Mvc' . DS . 'Interfaces'
+);
+
+//Autoload all files in the Tinker namesspace
+$Loader->addNamespace(
+    "\Tinker", ROOT . DS . 'core' . DS . 'Tinker' . DS . 'src'
+);
+
 //Bootstrap the application
-require ROOT . DS . 'core' . DS . 'test' . DS . 'bootstrap.php';
+require CORE . DS . 'test' . DS . 'bootstrap.php';
 
 //Load the runtime configuration
-require ROOT . DS . 'core' . DS . 'test' . DS . 'configure.php';
+require CORE . DS . 'test' . DS . 'configure.php';
 
-//Begin dispatch
-require ROOT . DS . 'core' . DS . 'test' . DS . 'dispatch.php';
+//Router
+Di\IoCRegistry::register('Router', function(){
+    $Router = new Mvc\Router('/tinker_plugin/tinker_plugin/index/e1/e2/e3/e4:1');
+    return $Router;
+});
+
+$Router = Di\IoCRegistry::resolve('Router');
+
+//View
+Di\IoCRegistry::register('View', function() use ($Router, $BuildTime, $Loader) {
+    $View = new Mvc\View($Router, $BuildTime, $Loader);
+    return $View;
+});
+
+$View = Di\IoCRegistry::resolve('View');
+
+//Theme
+Di\IoCRegistry::register('Theme', function() use ($Router, $View, $Loader) {
+    $View = new \Tinker\Mvc\Theme($Router, $View, $Loader);
+    return $View;
+});
+
+$Theme = Di\IoCRegistry::resolve('Theme');
+
+// Gather plugins, controllers and actions
+// Given the URI /example/main/index/p1/p2/p3/p4:1
+// We would be passing 4 GET parameters (where p4 is a named key to value pair and p1 - p3 would be assigned numeric
+// keys) into the index action of the main controller of the example plugin.
+// The name of the plugin should also be that plugins namespace.
+//
+// We will predefine 3 possible paths for autoloading:
+// 1. Core, the core path will look for a Plugins directory in the core library, this will mostly be used for
+// building examples.
+// 2. Main, This will check the main plugin path.
+// 3. App, This will check the Plugin path inside App. This directory will ship empty by default. I'm assuming this
+// is where you will build your application.
+// An autoloader will figure out which path to pull from.
+//Finally we will istanitate the classes based on the PSR-4 autoloading statndards. This might look something like:
+// $class = '\\Example\\Controller\\MainController';
+// $Controller = new $class();
+// $Controller->index();
+//Sample URI /tinker_plugin/tinker_plugin/execute/e1/e2/e3/e4:1
+
+$plugin = $Router->getPlugin(true);
+$model = $Router->getPlugin(true);
+$controller = $Router->getPlugin(true) . 'Controller';
+$action = $Router->getAction();
+
+//Autoload all plugins
+$Loader->addNamespace(
+    $plugin,
+    CORE . DS . 'plugin' . DS . $plugin . DS . 'src'
+);
+
+$Loader->addNamespace(
+    $plugin,
+    APP . DS . 'plugin' . DS . $plugin . DS . 'src'
+);
+
+$Loader->addNamespace(
+    'Main',
+    APP . DS . 'Main' . DS . 'src'
+);
 
 //Load custom containers
-require ROOT . DS . 'core' . DS . 'test' . DS . 'containers.php';
+require CORE . DS . 'test' . DS . 'containers.php';
 
 /**
- * A shamfull hack for passing and instance into a unit test
+ * A shamfull hack for passing an instance into a unit test
  */
 class TestGlobals
 {

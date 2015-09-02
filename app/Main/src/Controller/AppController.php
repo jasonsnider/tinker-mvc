@@ -1,13 +1,11 @@
 <?php
 /**
- * TinkerPlugin Controller
+ * AppController
  */
 
 namespace Main\Controller;
 
 /**
- * TinkerPlugin Controller
- *
- * Just a mock up of a controller
+ * Application wide controller logic
  */
 class AppController extends \Tinker\Mvc\Controller{}

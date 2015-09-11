@@ -51,7 +51,6 @@ namespace PhpFig;
  */
 class Loader
 {
-
     /**
      * An associative array where the key is a namespace prefix and the value
      * is an array of base directories for classes in that namespace.
@@ -93,23 +92,20 @@ class Loader
     public function addNamespace($prefix, $base_dir, $prepend = false)
     {
         // normalize namespace prefix
-        $prefix = trim($prefix, '\\') . '\\';
+        $prefix = trim($prefix, '\\').'\\';
 
         // normalize the base directory with a trailing separator
-        $base_dir = rtrim($base_dir, DIRECTORY_SEPARATOR) . '/';
+        $base_dir = rtrim($base_dir, DIRECTORY_SEPARATOR).'/';
 
         // initialize the namespace prefix array
-        if (isset($this->prefixes[$prefix]) === false)
-        {
+        if (isset($this->prefixes[$prefix]) === false) {
             $this->prefixes[$prefix] = array();
         }
 
         // retain the base directory for the namespace prefix
-        if ($prepend)
-        {
+        if ($prepend) {
             array_unshift($this->prefixes[$prefix], $base_dir);
-        } else
-        {
+        } else {
             array_push($this->prefixes[$prefix], $base_dir);
         }
     }
@@ -128,8 +124,7 @@ class Loader
 
         // work backwards through the namespace names of the fully-qualified
         // class name to find a mapped file name
-        while (false !== $pos = strrpos($prefix, '\\'))
-        {
+        while (false !== $pos = strrpos($prefix, '\\')) {
 
             // retain the trailing namespace separator in the prefix
             $prefix = substr($class, 0, $pos + 1);
@@ -139,8 +134,7 @@ class Loader
 
             // try to load a mapped file for the prefix and relative class
             $mapped_file = $this->loadMappedFile($prefix, $relative_class);
-            if ($mapped_file)
-            {
+            if ($mapped_file) {
                 return $mapped_file;
             }
 
@@ -164,25 +158,22 @@ class Loader
     protected function loadMappedFile($prefix, $relative_class)
     {
         // are there any base directories for this namespace prefix?
-        if (isset($this->prefixes[$prefix]) === false)
-        {
+        if (isset($this->prefixes[$prefix]) === false) {
             return false;
         }
 
         // look through base directories for this namespace prefix
-        foreach ($this->prefixes[$prefix] as $base_dir)
-        {
+        foreach ($this->prefixes[$prefix] as $base_dir) {
 
             // replace the namespace prefix with the base directory,
             // replace namespace separators with directory separators
             // in the relative class name, append with .php
             $file = $base_dir
-                . str_replace('\\', '/', $relative_class)
-                . '.php';
+                .str_replace('\\', '/', $relative_class)
+                .'.php';
 
             // if the mapped file exists, require it
-            if ($this->requireFile($file))
-            {
+            if ($this->requireFile($file)) {
                 // yes, we're done
                 return $file;
             }
@@ -200,12 +191,23 @@ class Loader
      */
     protected function requireFile($file)
     {
-        if (file_exists($file))
-        {
+
+        //Check the literal path
+        if (file_exists($file)) {
             require $file;
             return true;
+        } else {
+            //If the literal path does not resolve, check against the include
+            //paths
+            $paths = explode(PATH_SEPARATOR, get_include_path());
+            foreach ($paths as $path) {
+                if (file_exists($path.DS.$file)) {
+                    require $file;
+                    return true;
+                }
+            }
         }
+
         return false;
     }
-
 }

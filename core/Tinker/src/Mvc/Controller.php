@@ -40,6 +40,19 @@ abstract class Controller implements Interfaces\Controller
     }
 
     /**
+     * Injects dependencies into an object
+     *
+     * @param object $Object
+     * @retrun void
+     */
+    public function inject($Object)
+    {
+        $rc = new \ReflectionClass($Object);
+        $name = $rc->getShortName();
+        $this->{$name} = $Object;
+    }
+
+    /**
      * A setter for Model objects
      * 
      * @param object $Model

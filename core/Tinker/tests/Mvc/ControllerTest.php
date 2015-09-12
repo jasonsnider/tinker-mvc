@@ -28,6 +28,11 @@ class MockController extends \Main\Controller\AppController
 class MockModel{}
 
 /**
+ * Mocks a helper class
+ */
+class MockHelper{}
+
+/**
  * Controller Tests
  */
 class ControllerTest extends \PHPUnit_Framework_TestCase
@@ -84,6 +89,9 @@ class ControllerTest extends \PHPUnit_Framework_TestCase
         $mc = new MockController($Theme, $View);
         $mc->setModel(new \TinkerPlugin\Model\TinkerPlugin());
         $mc->setModel(new MockModel());
+        $mc->setModel(new MockModel());
+
+        $mc->inject(new MockHelper());
 
         //View and Theme setters
         //$this->assertSame(1, $mc->getTheme());
@@ -91,6 +99,7 @@ class ControllerTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue(is_object($mc->TinkerPlugin));
         $this->assertTrue(is_object($mc->MockModel));
+        $this->assertTrue(is_object($mc->MockHelper));
     }
 
 }

@@ -22,6 +22,14 @@ interface Controller
     public function __construct(Theme $Theme, View $View);
 
     /**
+     * Injects dependencies into an object
+     *
+     * @param object $Object
+     * @retrun void
+     */
+    public function inject($Object);
+    
+    /**
      * A setter for Model objects
      * 
      * @param object $model

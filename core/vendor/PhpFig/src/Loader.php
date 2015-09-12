@@ -193,7 +193,7 @@ class Loader
     {
 
         //Check the literal path
-        if (file_exists($file)) {
+        if (is_file($file)) {
             require $file;
             return true;
         } else {
@@ -201,7 +201,7 @@ class Loader
             //paths
             $paths = explode(PATH_SEPARATOR, get_include_path());
             foreach ($paths as $path) {
-                if (file_exists($path.DS.$file)) {
+                if (is_file($path.DS.$file)) {
                     require $file;
                     return true;
                 }

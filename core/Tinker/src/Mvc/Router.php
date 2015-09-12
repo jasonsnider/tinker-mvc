@@ -136,19 +136,21 @@ class Router implements Interfaces\Router
 
                 if (is_file($check))
                 {
-                    $asset = $check;
+                    $asset = $check; 
                 } else {
                     //If the literal path does not resolve, check against the include
                     //paths
                     $iPaths = explode(PATH_SEPARATOR, get_include_path());
                     foreach ($iPaths as $path) {
-                        if (file_exists($path.DS.$check)) {
+                        if (is_file($path.DS.$check)) {
                             $asset = $path.DS.$check;
                         }
                     }
                 }
             }
         }
+        
+
 
         if(is_file($asset)){
             return $asset;
@@ -170,9 +172,20 @@ class Router implements Interfaces\Router
 
         //If the request is a real file from the requested plugin
         if(is_file($asset)){
+
+            $info = pathinfo($asset);
+
             //Start the buffer
             ob_start();
 
+            if($info['extension'] === 'js'){
+                header("Content-type: text/javascript");
+            }else{
+                header("Content-type: text/{$info['extension']}");
+            }
+
+
+            
             //Grab the file and write it to the buffer
             require $asset;
 
@@ -181,7 +194,7 @@ class Router implements Interfaces\Router
 
             //Clean the buffer
             ob_end_clean();
-
+            
             //echo the buffer and halt execution
             echo $output;
             //die();

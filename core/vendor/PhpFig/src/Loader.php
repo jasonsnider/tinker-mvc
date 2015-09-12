@@ -202,7 +202,7 @@ class Loader
             $paths = explode(PATH_SEPARATOR, get_include_path());
             foreach ($paths as $path) {
                 if (is_file($path.DS.$file)) {
-                    require $file;
+                    require $path.DS.$file;
                     return true;
                 }
             }

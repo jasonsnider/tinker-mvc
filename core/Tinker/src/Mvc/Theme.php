@@ -135,6 +135,16 @@ class Theme implements Interfaces\Theme
             if (is_file($check))
             {
                 $file = $check;
+               
+            } else {
+                //If the literal path does not resolve, check against the include
+                //paths
+                $iPaths = explode(PATH_SEPARATOR, get_include_path());
+                foreach ($iPaths as $path) {
+                    if (file_exists($path.DS.$check)) {
+                        $file = $path.DS.$check;
+                    }
+                }
             }
         }
 

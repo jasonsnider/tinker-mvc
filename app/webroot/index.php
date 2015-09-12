@@ -33,7 +33,7 @@ define('APP', ROOT . DS . 'app');
 // Build time
 // Record the current microtime, rendering the view will capture the diff
 // between now and the ~end of rendering
-require CORE . DS . 'Tinker' . DS .
+require 'Tinker' . DS .
     'src' . DS . 'Utility' . DS . 'BuildTime.php';
 
 $BuildTime = new Utility\BuildTime(microtime());
@@ -163,7 +163,7 @@ $action = $Router->getAction();
 //Autoload all plugins
 $Loader->addNamespace(
     $plugin,
-    CORE . DS . 'plugin' . DS . $plugin . DS . 'src'
+    'plugin' . DS . $plugin . DS . 'src'
 );
 
 $Loader->addNamespace(

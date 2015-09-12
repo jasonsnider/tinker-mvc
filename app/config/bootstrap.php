@@ -19,11 +19,11 @@ $Loader->register();
 
 //Autoload all files in the Tinker namespace
 $Loader->addNamespace(
-    "\MvcInterface", CORE . DS . 'Tinker' . DS . 'src' . DS . 'Mvc' . DS . 'Interfaces'
+    "\MvcInterface", 'Tinker' . DS . 'src' . DS . 'Mvc' . DS . 'Interfaces'
 );
 
 
 //Autoload all files in the Tinker namespace
 $Loader->addNamespace(
-    "\Tinker", CORE . DS . 'Tinker' . DS . 'src'
+    "\Tinker", 'Tinker' . DS . 'src'
 );

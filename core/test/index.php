@@ -21,19 +21,19 @@ define('DS', DIRECTORY_SEPARATOR);
 define('ROOT', dirname(dirname(dirname(__FILE__))));
 
 /**
- * Defines a standard path to the tinker core lib
- */
-define('CORE', ROOT . DS . 'core');
-
-/**
  * Defines a standard path to application files
  */
 define('APP', ROOT . DS . 'app');
 
+/**
+ * Add core to the existing include path
+ */
+set_include_path(get_include_path() . PATH_SEPARATOR . ROOT . DS . 'core');
+
 // Build time
 // Record the current microtime, rendering the view will capture the diff
 // between now and the ~end of rendering
-require CORE . DS . 'Tinker' . DS .
+require 'Tinker' . DS .
     'src' . DS . 'Utility' . DS . 'BuildTime.php';
 
 $BuildTime = new Utility\BuildTime(microtime());
@@ -106,7 +106,7 @@ $controller = null;
 $action = null;
 
 //Load and instantiate, loader and register the auto loader.
-require CORE . DS .
+require 
     'vendor' . DS .
     'PhpFig' . DS .
     'src' . DS .
@@ -117,19 +117,19 @@ $Loader->register();
 
 //Autoload all files in the Tinker namesspace
 $Loader->addNamespace(
-    "\MvcInterface", ROOT . DS . 'core' . DS . 'Tinker' . DS . 'src' . DS . 'Mvc' . DS . 'Interfaces'
+    "\MvcInterface", 'Tinker' . DS . 'src' . DS . 'Mvc' . DS . 'Interfaces'
 );
 
 //Autoload all files in the Tinker namesspace
 $Loader->addNamespace(
-    "\Tinker", ROOT . DS . 'core' . DS . 'Tinker' . DS . 'src'
+    "\Tinker", 'Tinker' . DS . 'src'
 );
 
 //Bootstrap the application
-require CORE . DS . 'test' . DS . 'bootstrap.php';
+require 'test' . DS . 'bootstrap.php';
 
 //Load the runtime configuration
-require CORE . DS . 'test' . DS . 'configure.php';
+require 'test' . DS . 'configure.php';
 
 //Router
 Di\IoCRegistry::register('Router', function(){
@@ -182,7 +182,7 @@ $action = $Router->getAction();
 //Autoload all plugins
 $Loader->addNamespace(
     $plugin,
-    CORE . DS . 'plugin' . DS . $plugin . DS . 'src'
+    'plugin' . DS . $plugin . DS . 'src'
 );
 
 $Loader->addNamespace(
@@ -196,7 +196,7 @@ $Loader->addNamespace(
 );
 
 //Load custom containers
-require CORE . DS . 'test' . DS . 'containers.php';
+require 'test' . DS . 'containers.php';
 
 /**
  * A shamfull hack for passing an instance into a unit test

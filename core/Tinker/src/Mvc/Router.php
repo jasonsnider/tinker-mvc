@@ -175,17 +175,18 @@ class Router implements Interfaces\Router
 
             $info = pathinfo($asset);
 
+
             //Start the buffer
             ob_start();
 
-            if($info['extension'] === 'js'){
-                header("Content-type: text/javascript");
-            }else{
-                header("Content-type: text/{$info['extension']}");
+            if(array_key_exists('extension', $info)){
+                if($info['extension'] === 'js'){
+                    //header("Content-type: text/javascript");
+                }else{
+                    //header("Content-type: text/{$info['extension']}");
+                }
             }
 
-
-            
             //Grab the file and write it to the buffer
             require $asset;
 

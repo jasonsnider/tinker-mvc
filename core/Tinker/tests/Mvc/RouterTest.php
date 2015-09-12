@@ -13,6 +13,7 @@ class RouterTest extends \PHPUnit_Framework_TestCase
         $this->MockUri6 = new \Tinker\Mvc\Router('/plugin/controller/action/pass1/pass2/named1:1/pass3/named2:2');
         $this->MockUri7 = new \Tinker\Mvc\Router('/tinker_plugin/css/empty');
         $this->MockUri8 = new \Tinker\Mvc\Router('/tinker_plugin/css/empty.css');
+        $this->MockUri9 = new \Tinker\Mvc\Router('/application/css/style.css');
     }
 
 
@@ -90,6 +91,19 @@ class RouterTest extends \PHPUnit_Framework_TestCase
         $output = ob_get_contents();
         ob_end_clean();
         $this->assertSame('this file is empty', $output);
+
+
+        $Loader2 = \Tinker\TestGlobals::getGlobal('Loader');
+        $Loader2->addNamespace(
+            'Application',
+            ROOT . DS . 'app' . DS . 'plugin' . DS . 'Application' . DS . 'src'
+        );
+
+        ob_start();
+        $this->MockUri9->fetchAsset($this->MockUri9->checkAsset($Loader2));
+        $output = ob_get_contents();
+        ob_end_clean();
+        $this->assertTrue(is_integer(strpos($output, '/*')));
         
     }
 

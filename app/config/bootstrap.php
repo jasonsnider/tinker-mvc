@@ -8,11 +8,7 @@
 namespace Tinker;
 
 //Load and instantiate, loader and register the auto loader.
-require CORE . DS .
-    'vendor' . DS .
-    'PhpFig' . DS .
-    'src' . DS .
-    'Loader.php';
+require 'vendor' . DS . 'PhpFig' . DS . 'src' . DS . 'Loader.php';
 
 $Loader = new \PhpFig\Loader;
 $Loader->register();

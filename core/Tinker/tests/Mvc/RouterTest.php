@@ -85,6 +85,8 @@ class RouterTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Since this test sets a header we need to isolate it's process
+     * 
      * @preserveGlobalState
      * @runInSeparateProcess
      */

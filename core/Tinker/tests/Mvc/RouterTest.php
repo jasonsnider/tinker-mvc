@@ -84,6 +84,10 @@ class RouterTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($testMissingFile);
     }
 
+    /**
+     * @preserveGlobalState
+     * @runInSeparateProcess
+     */
     public function testFetchAssetReturnsTheBufferContentsWhenTheRequestedUriIsAPluginAsset(){
 
         ob_start();

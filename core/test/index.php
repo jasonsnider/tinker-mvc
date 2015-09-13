@@ -13,17 +13,23 @@ namespace Tinker;
 /**
  * Shorthand for DIRECTORY_SEPARATOR
  */
-define('DS', DIRECTORY_SEPARATOR);
+if (!defined('DS')){
+    define('DS', DIRECTORY_SEPARATOR);
+}
 
 /**
  * Defines a standard ROOT file path
  */
-define('ROOT', dirname(dirname(dirname(__FILE__))));
+if (!defined('ROOT')){
+    define('ROOT', dirname(dirname(dirname(__FILE__))));
+}
 
 /**
  * Defines a standard path to application files
  */
-define('APP', ROOT . DS . 'app');
+if (!defined('APP')){
+    define('APP', ROOT . DS . 'app');
+}
 
 /**
  * Add core to the existing include path

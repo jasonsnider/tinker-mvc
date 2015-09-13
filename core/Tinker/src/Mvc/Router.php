@@ -181,9 +181,9 @@ class Router implements Interfaces\Router
 
             if(array_key_exists('extension', $info)){
                 if($info['extension'] === 'js'){
-                    //header("Content-type: text/javascript");
+                    header("Content-type: text/javascript");
                 }else{
-                    //header("Content-type: text/{$info['extension']}");
+                    header("Content-type: text/{$info['extension']}");
                 }
             }
 

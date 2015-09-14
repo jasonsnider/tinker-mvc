@@ -10,7 +10,7 @@ namespace Application\Controller;
  * 
  * Just a mock up of a controller
  */
-class ApplicationController extends \Main\Controller\AppController
+class ApplicationController extends \App\Controller\AppController
 {
 
     /**

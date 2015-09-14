@@ -2,7 +2,7 @@
 /**
  * Mock the buildTime object
  */
-class MockController extends \Main\Controller\AppController
+class MockController extends \App\Controller\AppController
 {
 
     public function getTheme()

@@ -172,8 +172,8 @@ $Loader->addNamespace(
 );
 
 $Loader->addNamespace(
-    'Main',
-    APP . DS . 'Main' . DS . 'src'
+    'App',
+    APP . DS . 'src'
 );
 
 //Load custom containers

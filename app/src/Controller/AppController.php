@@ -3,7 +3,7 @@
  * AppController
  */
 
-namespace Main\Controller;
+namespace App\Controller;
 
 /**
  * Application wide controller logic

@@ -21,20 +21,19 @@ define('DS', DIRECTORY_SEPARATOR);
 define('ROOT', dirname(dirname(dirname(__FILE__))));
 
 /**
- * Defines a standard path to the tinker core lib
- */
-define('CORE', ROOT . DS . 'core');
-
-/**
  * Defines a standard path to application files
  */
-define('APP', ROOT . DS . 'app');
+define('APP', dirname(dirname(__FILE__)));
+
+/**
+ * Add core to the existing include path
+ */
+set_include_path(get_include_path() . PATH_SEPARATOR . ROOT . DS . 'core');
 
 // Build time
 // Record the current microtime, rendering the view will capture the diff
 // between now and the ~end of rendering
-require 'Tinker' . DS .
-    'src' . DS . 'Utility' . DS . 'BuildTime.php';
+require 'Tinker' . DS . 'src' . DS . 'Utility' . DS . 'BuildTime.php';
 
 $BuildTime = new Utility\BuildTime(microtime());
 

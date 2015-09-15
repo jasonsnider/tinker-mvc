@@ -28,14 +28,6 @@ interface Controller
      * @retrun void
      */
     public function inject($Object);
-    
-    /**
-     * A setter for Model objects
-     * 
-     * @param object $model
-     * @retrun void
-     */
-    public function setModel($Model);
 
     /**
      * A setter for $View

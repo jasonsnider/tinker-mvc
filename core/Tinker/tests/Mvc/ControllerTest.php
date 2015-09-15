@@ -87,9 +87,9 @@ class ControllerTest extends \PHPUnit_Framework_TestCase
         $Theme = new \Tinker\Mvc\Theme($Router, $View, $Loader);
 
         $mc = new MockController($Theme, $View);
-        $mc->setModel(new \TinkerPlugin\Model\TinkerPlugin());
-        $mc->setModel(new MockModel());
-        $mc->setModel(new MockModel());
+        $mc->inject(new \TinkerPlugin\Model\TinkerPlugin());
+        $mc->inject(new MockModel());
+        $mc->inject(new MockModel());
 
         $mc->inject(new MockHelper());
 

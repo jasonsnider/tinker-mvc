@@ -13,7 +13,7 @@ Di\IoCRegistry::register('TinkerPluginController', function() use ($plugin, $con
     $Model = "\\{$plugin}\\Model\\{$model}";
 
     $Controller = new $class($Theme, $View);
-    $Controller->setModel(new $Model());
+    $Controller->inject(new $Model());
     
     return $Controller;
 });

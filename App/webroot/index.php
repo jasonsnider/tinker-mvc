@@ -187,7 +187,7 @@ else:
         $Model = "\\{$plugin}\\Model\\{$model}";
 
         $Controller = new $class($Theme, $View);
-        $Controller->setModel(new $Model());
+        $Controller->inject(new $Model());
     }
 
     $Controller->{$action}();

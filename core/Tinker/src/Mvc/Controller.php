@@ -51,20 +51,7 @@ abstract class Controller implements Interfaces\Controller
         $name = $rc->getShortName();
         $this->{$name} = $Object;
     }
-
-    /**
-     * A setter for Model objects
-     * 
-     * @param object $Model
-     * @retrun void
-     */
-    public function setModel($Model)
-    {
-        $rc = new \ReflectionClass($Model);
-        $name = $rc->getShortName();
-        $this->{$name} = $Model;
-    }
-
+    
     /**
      * A setter for $View
      * 

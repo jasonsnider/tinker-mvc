@@ -16,11 +16,6 @@ namespace Tinker;
 define('DS', DIRECTORY_SEPARATOR);
 
 /**
- * Defines a standard ROOT file path
- */
-define('ROOT', dirname(dirname(dirname(__FILE__))));
-
-/**
  * Defines a standard path to application files
  */
 define('APP', dirname(dirname(__FILE__)));
@@ -28,7 +23,7 @@ define('APP', dirname(dirname(__FILE__)));
 /**
  * Add core to the existing include path
  */
-set_include_path(get_include_path() . PATH_SEPARATOR . ROOT . DS . 'core');
+set_include_path(get_include_path() . dirname(dirname(dirname(__FILE__))) . DS . 'core');
 
 // Build time
 // Record the current microtime, rendering the view will capture the diff

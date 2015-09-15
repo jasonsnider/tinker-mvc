@@ -102,7 +102,7 @@ class RouterTest extends \PHPUnit_Framework_TestCase
         $Loader2 = \Tinker\TestGlobals::getGlobal('Loader');
         $Loader2->addNamespace(
             'Application',
-            ROOT . DS . 'app' . DS . 'plugin' . DS . 'Application' . DS . 'src'
+            APP . DS . 'plugin' . DS . 'Application' . DS . 'src'
         );
 
         ob_start();

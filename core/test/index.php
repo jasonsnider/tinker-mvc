@@ -13,34 +13,27 @@ namespace Tinker;
 /**
  * Shorthand for DIRECTORY_SEPARATOR
  */
-if (!defined('DS')){
+if(!defined('DS')){
     define('DS', DIRECTORY_SEPARATOR);
 }
 
-/**
- * Defines a standard ROOT file path
- */
-if (!defined('ROOT')){
-    define('ROOT', dirname(dirname(dirname(__FILE__))));
-}
 
 /**
  * Defines a standard path to application files
  */
-if (!defined('APP')){
-    define('APP', ROOT . DS . 'app');
+if(!defined('APP')){
+    define('APP', dirname(dirname(dirname(__FILE__))) . DS . 'App');
 }
 
 /**
  * Add core to the existing include path
  */
-set_include_path(get_include_path() . PATH_SEPARATOR . ROOT . DS . 'core');
+//set_include_path(get_include_path() . dirname(dirname(__FILE__));
 
 // Build time
 // Record the current microtime, rendering the view will capture the diff
 // between now and the ~end of rendering
-require 'Tinker' . DS .
-    'src' . DS . 'Utility' . DS . 'BuildTime.php';
+require 'Tinker' . DS . 'src' . DS . 'Utility' . DS . 'BuildTime.php';
 
 $BuildTime = new Utility\BuildTime(microtime());
 
@@ -112,11 +105,7 @@ $controller = null;
 $action = null;
 
 //Load and instantiate, loader and register the auto loader.
-require 
-    'vendor' . DS .
-    'PhpFig' . DS .
-    'src' . DS .
-    'Loader.php';
+require 'vendor' . DS . 'PhpFig' . DS . 'src' . DS . 'Loader.php';
 
 $Loader = new \PhpFig\Loader;
 $Loader->register();
@@ -197,7 +186,7 @@ $Loader->addNamespace(
 );
 
 $Loader->addNamespace(
-   'App',
+    'App',
     APP . DS . 'src'
 );
 

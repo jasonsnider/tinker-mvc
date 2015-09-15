@@ -124,7 +124,7 @@ class LoaderTest extends \PHPUnit_Framework_TestCase
     {
 
         $ml = new MockLoader1();
-        $this->assertTrue($ml->getRequireFile(ROOT . DS . 'core' . DS . 'vendor' . DS . 'PhpFig' . DS . 'requireFileTest'));
+        $this->assertTrue($ml->getRequireFile('vendor' . DS . 'PhpFig' . DS . 'requireFileTest'));
         $this->assertFalse($ml->getRequireFile('not_a_file'));
 
         $this->assertTrue($ml->getRequireFile('vendor' . DS . 'PhpFig' . DS . 'requireFileTest'));

@@ -2,7 +2,6 @@
 /**
  * Controller.php
  */
-
 namespace Tinker\Mvc\Interfaces;
 
 /**

@@ -6,6 +6,7 @@
  */
 class TinkerPluginControllerTest extends \PHPUnit_Framework_TestCase
 {
+
     private $TinkerPluginController;
 
     public function __construct()
@@ -19,5 +20,4 @@ class TinkerPluginControllerTest extends \PHPUnit_Framework_TestCase
     {
         $this->TinkerPluginController->{$this->Router->getAction()}();
     }
-
 }

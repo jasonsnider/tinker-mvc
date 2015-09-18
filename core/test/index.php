@@ -5,7 +5,6 @@
  * The applications entry point. All requests will route through this file.
  * Set Apache's DocumentRoot to point to the webroot directory.
  */
-
 namespace Tinker;
 
 ////Initialize startup variables/////
@@ -13,7 +12,7 @@ namespace Tinker;
 /**
  * Shorthand for DIRECTORY_SEPARATOR
  */
-if(!defined('DS')){
+if (!defined('DS')) {
     define('DS', DIRECTORY_SEPARATOR);
 }
 
@@ -21,7 +20,7 @@ if(!defined('DS')){
 /**
  * Defines a standard path to application files
  */
-if(!defined('APP')){
+if (!defined('APP')) {
     define('APP', dirname(dirname(dirname(__FILE__))) . DS . 'App');
 }
 
@@ -29,7 +28,6 @@ if(!defined('APP')){
  * Add core to the existing include path
  */
 //set_include_path(get_include_path() . dirname(dirname(__FILE__));
-
 // Build time
 // Record the current microtime, rendering the view will capture the diff
 // between now and the ~end of rendering
@@ -127,7 +125,7 @@ require 'test' . DS . 'bootstrap.php';
 require 'test' . DS . 'configure.php';
 
 //Router
-Di\IoCRegistry::register('Router', function(){
+Di\IoCRegistry::register('Router', function() {
     $Router = new Mvc\Router('/tinker_plugin/tinker_plugin/index/e1/e2/e3/e4:1');
     return $Router;
 });
@@ -176,18 +174,15 @@ $action = $Router->getAction();
 
 //Autoload all plugins
 $Loader->addNamespace(
-    $plugin,
-    'plugin' . DS . $plugin . DS . 'src'
+    $plugin, 'plugin' . DS . $plugin . DS . 'src'
 );
 
 $Loader->addNamespace(
-    $plugin,
-    APP . DS . 'plugin' . DS . $plugin . DS . 'src'
+    $plugin, APP . DS . 'plugin' . DS . $plugin . DS . 'src'
 );
 
 $Loader->addNamespace(
-    'App',
-    APP . DS . 'src'
+    'App', APP . DS . 'src'
 );
 
 //Load custom containers

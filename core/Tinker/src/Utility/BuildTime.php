@@ -2,7 +2,6 @@
 /**
  * Approximates the time it takes the webserver to build a page.
  */
-
 namespace Tinker\Utility;
 
 /**
@@ -92,5 +91,4 @@ class BuildTime
         $this->setFinish($microtime);
         return ($this->getFinish() - $this->getStart());
     }
-
 }

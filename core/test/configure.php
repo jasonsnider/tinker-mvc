@@ -2,7 +2,6 @@
 /**
  * Runtime variables 
  */
-
 namespace Tinker;
 
 Configure::write('theme', 'TinkerPlugin');

@@ -12,5 +12,4 @@ class TinkerPluginTest extends \PHPUnit_Framework_TestCase
         $model = new \TinkerPlugin\Model\TinkerPlugin;
         $this->assertSame('Welcome to TinkerMVC', $model->welcome());
     }
-
 }

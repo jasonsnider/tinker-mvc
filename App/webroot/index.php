@@ -5,7 +5,6 @@
  * The applications entry point. All requests will route through this file.
  * Set Apache's DocumentRoot to point to the webroot directory.
  */
-
 namespace Tinker;
 
 ////Initialize startup variables/////
@@ -107,7 +106,7 @@ require APP . DS . 'config' . DS . 'configure.php';
 
 
 // Router
-Di\IoCRegistry::register('Router', function(){
+Di\IoCRegistry::register('Router', function() {
     $Router = new Mvc\Router($_SERVER['REQUEST_URI']);
     return $Router;
 });
@@ -156,18 +155,15 @@ $action = $Router->getAction();
 
 //Autoload all plugins
 $Loader->addNamespace(
-    $plugin,
-    'plugin' . DS . $plugin . DS . 'src'
+    $plugin, 'plugin' . DS . $plugin . DS . 'src'
 );
 
 $Loader->addNamespace(
-    $plugin,
-    APP . DS . 'plugin' . DS . $plugin . DS . 'src'
+    $plugin, APP . DS . 'plugin' . DS . $plugin . DS . 'src'
 );
 
 $Loader->addNamespace(
-    'App',
-    APP . DS . 'src'
+    'App', APP . DS . 'src'
 );
 
 //Load custom containers
@@ -178,11 +174,9 @@ if (!empty($Router->checkAsset($Loader))):
 else:
     //Load the MVC stack, if a specific plugin has not been defined as a container
     //MVC conventions will be used to load the MVC stack
-    if (Di\IoCRegistry::registered($controller))
-    {
+    if (Di\IoCRegistry::registered($controller)) {
         $Controller = Di\IoCRegistry::resolve($controller);
-    } else
-    {
+    } else {
         $class = "\\{$plugin}\\Controller\\{$controller}";
         $Model = "\\{$plugin}\\Model\\{$model}";
 

@@ -2,7 +2,6 @@
 /**
  * Loader.php
  */
-
 namespace PhpFig;
 
 /**
@@ -51,6 +50,7 @@ namespace PhpFig;
  */
 class Loader
 {
+
     /**
      * An associative array where the key is a namespace prefix and the value
      * is an array of base directories for classes in that namespace.
@@ -92,10 +92,10 @@ class Loader
     public function addNamespace($prefix, $base_dir, $prepend = false)
     {
         // normalize namespace prefix
-        $prefix = trim($prefix, '\\').'\\';
+        $prefix = trim($prefix, '\\') . '\\';
 
         // normalize the base directory with a trailing separator
-        $base_dir = rtrim($base_dir, DIRECTORY_SEPARATOR).'/';
+        $base_dir = rtrim($base_dir, DIRECTORY_SEPARATOR) . '/';
 
         // initialize the namespace prefix array
         if (isset($this->prefixes[$prefix]) === false) {
@@ -169,8 +169,8 @@ class Loader
             // replace namespace separators with directory separators
             // in the relative class name, append with .php
             $file = $base_dir
-                .str_replace('\\', '/', $relative_class)
-                .'.php';
+                . str_replace('\\', '/', $relative_class)
+                . '.php';
 
             // if the mapped file exists, require it
             if ($this->requireFile($file)) {
@@ -201,8 +201,8 @@ class Loader
             //paths
             $paths = explode(PATH_SEPARATOR, get_include_path());
             foreach ($paths as $path) {
-                if (is_file($path.DS.$file)) {
-                    require $path.DS.$file;
+                if (is_file($path . DS . $file)) {
+                    require $path . DS . $file;
                     return true;
                 }
             }

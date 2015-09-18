@@ -2,7 +2,6 @@
 /**
  * Controller.php
  */
-
 namespace Tinker\Mvc;
 
 /**
@@ -51,7 +50,7 @@ abstract class Controller implements Interfaces\Controller
         $name = $rc->getShortName();
         $this->{$name} = $Object;
     }
-    
+
     /**
      * A setter for $View
      * 
@@ -84,5 +83,4 @@ abstract class Controller implements Interfaces\Controller
     {
         echo $this->Theme->render($this->View);
     }
-
 }

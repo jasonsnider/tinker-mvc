@@ -1,6 +1,4 @@
-<?php
-
-namespace Tinker;
+<?php namespace Tinker;
 
 class ViewTest extends \PHPUnit_Framework_TestCase
 {
@@ -22,16 +20,13 @@ class ViewTest extends \PHPUnit_Framework_TestCase
         $Router2 = new Mvc\Router('/application/');
         $Loader2 = TestGlobals::getGlobal('Loader');
         $Loader2->addNamespace(
-            'Application',
-            APP . DS . 'plugin' . DS . 'Application' . DS . 'src'
+            'Application', APP . DS . 'plugin' . DS . 'Application' . DS . 'src'
         );
 
         $View2 = new \Tinker\Mvc\View($Router2, 'buildtime', $Loader2);
-        
+
         $this->assertSame(
-            '/var/www/tinker-lib/App/plugin/Application/src/View/application/index.php',
-            $View2->setViewPath()
+            '/var/www/tinker-lib/App/plugin/Application/src/View/application/index.php', $View2->setViewPath()
         );
     }
-
 }

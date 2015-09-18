@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Mock the buildTime object
  */
@@ -19,18 +20,23 @@ class MockController extends \App\Controller\AppController
     {
         
     }
-
 }
 
 /**
  * A mock model
  */
-class MockModel{}
+class MockModel
+{
+    
+}
 
 /**
  * Mocks a helper class
  */
-class MockHelper{}
+class MockHelper
+{
+    
+}
 
 /**
  * Controller Tests
@@ -78,7 +84,7 @@ class ControllerTest extends \PHPUnit_Framework_TestCase
     public function testSetters()
     {
 
-        $Loader  = \Tinker\TestGlobals::getGlobal('Loader');
+        $Loader = \Tinker\TestGlobals::getGlobal('Loader');
 
         //Mock index.php
         $BuildTime = new \Tinker\Utility\BuildTime(microtime());
@@ -101,5 +107,4 @@ class ControllerTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(is_object($mc->MockModel));
         $this->assertTrue(is_object($mc->MockHelper));
     }
-
 }

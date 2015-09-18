@@ -2,7 +2,6 @@
 /**
  * TinkerPlugin Controller
  */
-
 namespace Application\Controller;
 
 /**
@@ -24,5 +23,4 @@ class ApplicationController extends \App\Controller\AppController
     {
         $this->View->vars['welcome'] = $this->Application->welcome();
     }
-
 }

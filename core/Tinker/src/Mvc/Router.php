@@ -2,7 +2,6 @@
 /**
  * Maps a URI to an MVC path by parsing out the URI and setting the target plugin, controller, action and parameters
  */
-
 namespace Tinker\Mvc;
 
 /**
@@ -67,8 +66,7 @@ class Router implements Interfaces\Router
         $uriSegments = array_filter(explode('/', $requestUri));
         $uriLegnth = count($uriSegments);
 
-        switch ($uriLegnth)
-        {
+        switch ($uriLegnth) {
             case 0:
                 $this->setPlugin(\Tinker\Configure::read('plugin'));
                 $this->setController(\Tinker\Configure::read('controller'));
@@ -129,30 +127,28 @@ class Router implements Interfaces\Router
         //same name, the last path containing the asset wins
         $asset = false;
 
-        if(!empty($paths["{$plugin}\\"])){
-            for ($i = 0; $i < count($paths["{$plugin}\\"]); $i++)
-            {
+        if (!empty($paths["{$plugin}\\"])) {
+            for ($i = 0; $i < count($paths["{$plugin}\\"]); $i++) {
                 $check = $paths["{$plugin}\\"][$i] . 'webroot' . DS . $controller . DS . $action;
 
-                if (is_file($check))
-                {
-                    $asset = $check; 
+                if (is_file($check)) {
+                    $asset = $check;
                 } else {
                     //If the literal path does not resolve, check against the include
                     //paths
                     $iPaths = explode(PATH_SEPARATOR, get_include_path());
                     foreach ($iPaths as $path) {
-                        if (is_file($path.DS.$check)) {
-                            $asset = $path.DS.$check;
+                        if (is_file($path . DS . $check)) {
+                            $asset = $path . DS . $check;
                         }
                     }
                 }
             }
         }
-        
 
 
-        if(is_file($asset)){
+
+        if (is_file($asset)) {
             return $asset;
         }
 
@@ -171,7 +167,7 @@ class Router implements Interfaces\Router
     {
 
         //If the request is a real file from the requested plugin
-        if(is_file($asset)){
+        if (is_file($asset)) {
 
             $info = pathinfo($asset);
 
@@ -179,10 +175,10 @@ class Router implements Interfaces\Router
             //Start the buffer
             ob_start();
 
-            if(array_key_exists('extension', $info)){
-                if($info['extension'] === 'js'){
+            if (array_key_exists('extension', $info)) {
+                if ($info['extension'] === 'js') {
                     header("Content-type: text/javascript");
-                }else{
+                } else {
                     header("Content-type: text/{$info['extension']}");
                 }
             }
@@ -195,7 +191,7 @@ class Router implements Interfaces\Router
 
             //Clean the buffer
             ob_end_clean();
-            
+
             //echo the buffer and halt execution
             echo $output;
             //die();
@@ -241,8 +237,7 @@ class Router implements Interfaces\Router
      */
     public function setParams($params)
     {
-        for ($x = 0; $x < count($params); $x++)
-        {
+        for ($x = 0; $x < count($params); $x++) {
             $this->setParam($params[$x]);
         }
     }
@@ -255,15 +250,12 @@ class Router implements Interfaces\Router
     {
 
         //If the string contains a colon, assume it to be a named param
-        if (strpos($param, ':'))
-        {
+        if (strpos($param, ':')) {
             $pair = explode(':', $param);
             $this->params['named'][$pair[0]] = $pair[1];
-        } else
-        {
+        } else {
             //Add the string with a numeric index
-            if (!in_array($param, $_GET))
-            {
+            if (!in_array($param, $_GET)) {
                 $this->params['passed'][] = $param;
             }
         }
@@ -307,5 +299,4 @@ class Router implements Interfaces\Router
     {
         return $this->params;
     }
-
 }

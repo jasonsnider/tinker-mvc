@@ -6,7 +6,6 @@
  * @link      https://github.com/jasonsnider/tinker-mvc
  * @license   http://www.opensource.org/licenses/mit-license.php MIT License
  */
-
 namespace Tinker\Mvc;
 
 /**
@@ -61,20 +60,18 @@ class View implements Interfaces\View
         $action = $this->Router->getAction();
         $paths = $this->Loader->getPrefixes();
 
-        for ($i = 0; $i < count($paths["{$plugin}\\"]); $i++)
-        {
+        for ($i = 0; $i < count($paths["{$plugin}\\"]); $i++) {
             $check = $paths["{$plugin}\\"][$i] . 'View' . DS . $controller . DS . $action . '.php';
 
-            if (is_file($check))
-            {
+            if (is_file($check)) {
                 $file = $check;
             } else {
                 //If the literal path does not resolve, check against the include
                 //paths
                 $iPaths = explode(PATH_SEPARATOR, get_include_path());
                 foreach ($iPaths as $path) {
-                    if (file_exists($path.DS.$check)) {
-                        $file = $path.DS.$check;
+                    if (file_exists($path . DS . $check)) {
+                        $file = $path . DS . $check;
                     }
                 }
             }
@@ -96,5 +93,4 @@ class View implements Interfaces\View
         ob_end_clean();
         return $output;
     }
-
 }

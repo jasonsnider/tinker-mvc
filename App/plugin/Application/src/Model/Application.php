@@ -2,7 +2,6 @@
 /**
  * TinkerPlugin Model
  */
-
 namespace Application\Model;
 
 /**
@@ -22,5 +21,4 @@ class Application
     {
         return 'Welcome to TinkerMVC';
     }
-
 }

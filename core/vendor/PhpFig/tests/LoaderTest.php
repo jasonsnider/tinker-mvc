@@ -35,7 +35,6 @@ class MockLoader extends \PhpFig\Loader
     {
         return $this->requireFile($file);
     }
-
 }
 
 class MockLoader1 extends \PhpFig\Loader
@@ -45,7 +44,6 @@ class MockLoader1 extends \PhpFig\Loader
     {
         return $this->requireFile($file);
     }
-
 }
 
 class LoaderTest extends \PHPUnit_Framework_TestCase
@@ -128,6 +126,8 @@ class LoaderTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($ml->getRequireFile('not_a_file'));
 
         $this->assertTrue($ml->getRequireFile('vendor' . DS . 'PhpFig' . DS . 'requireFileTest'));
+
+        $this->assertTrue($ml->getRequireFile(dirname(dirname(dirname(__FILE__))) . DS . 'vendor' . DS . 'PhpFig' . DS . 'requireFileTest'));
     }
 
     public function testExistingFile()
@@ -164,5 +164,4 @@ class LoaderTest extends \PHPUnit_Framework_TestCase
         $expect = '/vendor/foo.bardoom/src/ClassName.php';
         $this->assertSame($expect, $actual);
     }
-
 }

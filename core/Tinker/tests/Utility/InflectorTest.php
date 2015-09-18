@@ -11,5 +11,4 @@ class InflectorTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame('MyControllerClass', $this->studlyCaps($string));
     }
-
 }

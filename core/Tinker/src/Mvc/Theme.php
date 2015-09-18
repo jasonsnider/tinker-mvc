@@ -1,7 +1,6 @@
 <?php
 /**
  */
-
 namespace Tinker\Mvc;
 
 /**
@@ -127,22 +126,19 @@ class Theme implements Interfaces\Theme
 
         $paths = $this->Loader->getPrefixes();
         //var_dump($paths);
-        for ($i = 0; $i < count($paths["{$theme}\\"]); $i++)
-        {
+        for ($i = 0; $i < count($paths["{$theme}\\"]); $i++) {
             $check = $paths["{$theme}\\"][$i] .
                 'View' . DS . 'layouts' . DS . $layout . '.php';
 
-            if (is_file($check))
-            {
+            if (is_file($check)) {
                 $file = $check;
-               
             } else {
                 //If the literal path does not resolve, check against the include
                 //paths
                 $iPaths = explode(PATH_SEPARATOR, get_include_path());
                 foreach ($iPaths as $path) {
-                    if (file_exists($path.DS.$check)) {
-                        $file = $path.DS.$check;
+                    if (file_exists($path . DS . $check)) {
+                        $file = $path . DS . $check;
                     }
                 }
             }
@@ -155,5 +151,4 @@ class Theme implements Interfaces\Theme
 
         return $output;
     }
-
 }

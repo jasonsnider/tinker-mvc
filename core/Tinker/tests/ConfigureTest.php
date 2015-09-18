@@ -1,9 +1,11 @@
 <?php
+
 /**
  * A unit test for configure
  */
 class ConfigureTest extends \PHPUnit_Framework_TestCase
 {
+
     public function testReadAll()
     {
         $this->assertTrue(!empty(\Tinker\Configure::read()));

@@ -35,5 +35,4 @@ class ThemeTest extends \PHPUnit_Framework_TestCase
         $Theme->setLayout('Bar');
         $this->assertSame('Bar', $Theme->getLayout());
     }
-
 }

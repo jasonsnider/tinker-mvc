@@ -2,7 +2,6 @@
 /**
  * IoCRegistry.php.
  */
-
 namespace Tinker\Di;
 
 /**

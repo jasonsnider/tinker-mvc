@@ -2,7 +2,6 @@
 /**
  * A class for managing runtime variables
  */
-
 namespace Tinker;
 
 /**
@@ -21,12 +20,10 @@ class Configure
      */
     public static function write($var, $val)
     {
-        if (empty(self::$vars[$var]))
-        {
+        if (empty(self::$vars[$var])) {
 
             self::$vars[$var] = $val;
-        } else
-        {
+        } else {
 
             $value = self::$vars[$var];
 
@@ -44,17 +41,14 @@ class Configure
      */
     public static function read($var = null)
     {
-        if (empty($var))
-        {
+        if (empty($var)) {
             return self::$vars;
         }
 
-        if(array_key_exists($var, self::$vars))
-        {
+        if (array_key_exists($var, self::$vars)) {
             return self::$vars[$var];
         }
-        
+
         return null;
     }
-
 }

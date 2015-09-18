@@ -13,7 +13,6 @@ class IoCRegistryMockTestObject
     {
         return 'bar';
     }
-
 }
 
 /**
@@ -26,7 +25,6 @@ class IoCRegistryMockTestObjectToBeAdded
     {
         return 'bar';
     }
-
 }
 
 /**
@@ -105,5 +103,4 @@ class IoCRegistryTest extends \PHPUnit_Framework_TestCase
         //Make sure only one container is removed
         $this->assertSame(count(\Tinker\Di\IoCRegistry::registry()), ($count - 1));
     }
-
 }

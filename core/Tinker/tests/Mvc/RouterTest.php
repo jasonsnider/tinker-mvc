@@ -16,8 +16,8 @@ class RouterTest extends \PHPUnit_Framework_TestCase
         $this->MockUri9 = new \Tinker\Mvc\Router('/application/css/style.css');
     }
 
-
-    public function testTheDefaultPluginIsRetrunedWhenNoPluginIsRequested(){
+    public function testTheDefaultPluginIsRetrunedWhenNoPluginIsRequested()
+    {
         $this->assertSame('tinker_plugin', $this->MockUri1->getPlugin());
     }
 
@@ -29,7 +29,8 @@ class RouterTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('plugin', $this->MockUri5->getPlugin());
     }
 
-    public function testTheDefaultControllerIsRetrunedWhenNoControllerIsRequested(){
+    public function testTheDefaultControllerIsRetrunedWhenNoControllerIsRequested()
+    {
         $this->assertSame('tinker_plugin', $this->MockUri1->getController());
         $this->assertSame('plugin', $this->MockUri2->getController());
     }
@@ -72,13 +73,15 @@ class RouterTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function testCheckAssetReturnsAFilePathWhenTheRequestedUriIsAPluginAsset(){
+    public function testCheckAssetReturnsAFilePathWhenTheRequestedUriIsAPluginAsset()
+    {
         //not empty === false
         $test = empty($this->MockUri7->checkAsset(\Tinker\TestGlobals::getGlobal('Loader')));
         $this->assertFalse($test);
     }
 
-    public function testCheckAssetReturnsFalseWhenTheRequestedUriIsNotAPluginAsset(){
+    public function testCheckAssetReturnsFalseWhenTheRequestedUriIsNotAPluginAsset()
+    {
         //is empty === true
         $testMissingFile = empty($this->MockUri8->checkAsset(\Tinker\TestGlobals::getGlobal('Loader')));
         $this->assertTrue($testMissingFile);
@@ -90,7 +93,8 @@ class RouterTest extends \PHPUnit_Framework_TestCase
      * @preserveGlobalState
      * @runInSeparateProcess
      */
-    public function testFetchAssetReturnsTheBufferContentsWhenTheRequestedUriIsAPluginAsset(){
+    public function testFetchAssetReturnsTheBufferContentsWhenTheRequestedUriIsAPluginAsset()
+    {
 
         ob_start();
         $this->MockUri7->fetchAsset($this->MockUri7->checkAsset(\Tinker\TestGlobals::getGlobal('Loader')));
@@ -101,8 +105,7 @@ class RouterTest extends \PHPUnit_Framework_TestCase
 
         $Loader2 = \Tinker\TestGlobals::getGlobal('Loader');
         $Loader2->addNamespace(
-            'Application',
-            APP . DS . 'plugin' . DS . 'Application' . DS . 'src'
+            'Application', APP . DS . 'plugin' . DS . 'Application' . DS . 'src'
         );
 
         ob_start();
@@ -110,13 +113,12 @@ class RouterTest extends \PHPUnit_Framework_TestCase
         $output = ob_get_contents();
         ob_end_clean();
         $this->assertTrue(is_integer(strpos($output, '/*')));
-        
     }
 
-    public function testFetchAssetReturnsFalseWhenTheRequestedUriIsNotAPluginAsset(){
+    public function testFetchAssetReturnsFalseWhenTheRequestedUriIsNotAPluginAsset()
+    {
         //is empty === true
-       $testMissingFile = empty($this->MockUri8->fetchAsset($this->MockUri7->checkAsset(\Tinker\TestGlobals::getGlobal('Loader'))));
-       $this->assertTrue($testMissingFile);
+        $testMissingFile = empty($this->MockUri8->fetchAsset($this->MockUri7->checkAsset(\Tinker\TestGlobals::getGlobal('Loader'))));
+        $this->assertTrue($testMissingFile);
     }
-
 }

@@ -4,7 +4,6 @@
  *
  * Bootstraps the application
  */
-
 namespace Tinker;
 
 //Load and instantiate, loader and register the auto loader.

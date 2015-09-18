@@ -2,7 +2,6 @@
 /**
  * TinkerPlugin Controller
  */
-
 namespace TinkerPlugin\Controller;
 
 /**
@@ -25,5 +24,4 @@ class TinkerPluginController extends \Tinker\Mvc\Controller
         $this->Theme->setTheme('TinkerPlugin');
         $this->View->vars['welcome'] = $this->TinkerPlugin->welcome();
     }
-
 }

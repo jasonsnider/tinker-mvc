@@ -2,7 +2,6 @@
 /**
  * Maps a URI to an MVC path by parsing out the URI and setting the target plugin, controller, action and parameters
  */
-
 namespace Tinker\Mvc\Interfaces;
 
 /**

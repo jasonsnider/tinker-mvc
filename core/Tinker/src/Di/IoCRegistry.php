@@ -2,7 +2,6 @@
 /**
  * IoCRegistry.php.
  */
-
 namespace Tinker\Di;
 
 /**
@@ -87,13 +86,11 @@ class IoCRegistry implements IoCRegistryInterface
     {
         $obj = null;
 
-        if (self::registered($name))
-        {
+        if (self::registered($name)) {
             $obj = self::$registry[$name];
             return $obj();
         }
 
         throw new \Exception("Tinker: Container {{$name}} not found.");
     }
-
 }

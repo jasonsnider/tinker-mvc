@@ -126,8 +126,8 @@ class LoaderTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($ml->getRequireFile('not_a_file'));
 
         $this->assertTrue($ml->getRequireFile('vendor' . DS . 'PhpFig' . DS . 'requireFileTest'));
-
-        $this->assertTrue($ml->getRequireFile(dirname(dirname(dirname(__FILE__))) . DS . 'vendor' . DS . 'PhpFig' . DS . 'requireFileTest'));
+        
+        $this->assertTrue($ml->getRequireFile(dirname(dirname(__FILE__)) . DS . 'requireFileTest'));
     }
 
     public function testExistingFile()

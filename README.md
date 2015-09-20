@@ -57,14 +57,3 @@ My intent is to try to determine how risky an upgrade would be. Patch and minor
 versions should be considered low risk upgrades while major version should be 
 considered high risk (so pay closer attention). If you change something that
 is not considered __public__ then all bets are off.
-
-## Created By
-
-**Jason Snider**
-
-* <https://twitter.com/jason_snider>
-* <https://github.com/jasonsnider>
-
-## License
-
-Code released under [the MIT license](LICENSE.txt).

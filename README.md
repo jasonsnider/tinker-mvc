@@ -1,7 +1,7 @@
 # Tinker MVC
 
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.txt)
-[![Software License](https://img.shields.io/badge/contributors-brightgreen.svg?style=flat-square)](https://github.com/jasonsnider/tinker-mvc/graphs/contributors)
+[![Contributors](https://img.shields.io/badge/contributors-1-blue.svg?style=flat-square)](https://github.com/jasonsnider/tinker-mvc/graphs/contributors)
 
 An experimental framework to help me better understand various design concepts.
 

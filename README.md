@@ -42,14 +42,9 @@ grab that commit. I only increment version numbers when I'm ready to push to
 master so my last commit to dev prior to merging into master branch will always 
 have a commit message of 'Version x.x.x'.
 
-Major
-    Breaking changes.
-
-Minor 
-    New features; no breaking changes.
-
-Patch
-    Bug fixes, formatting, comments, documentation, etc; no breaking changes.
+* Major: breaking changes.
+* Minor: new features; no breaking changes.
+* Patch: bug fixes, formatting, comments, documentation, etc; no breaking changes.
 
 At version 0.x.x all changes should be considered breaking. 
 

@@ -1,18 +1,14 @@
 <?php
 /**
- * TinkerMVC (https://github.com/jasonsnider/tinker-mvc)
- * 
- * @copyright Copyright (c) 2014 Jason D Snider (https://jasonsnider.com)
- * @link      https://github.com/jasonsnider/tinker-mvc
- * @license   http://www.opensource.org/licenses/mit-license.php MIT License
+ * View
  */
 namespace Tinker\Mvc;
 
 /**
- * View Class
+ * View 
  * 
- * All properties of view SHOULD have public exposure. This will allow us to work with a
- * given instance from inside of theme and view files.
+ * All properties of view SHOULD have public exposure. This will allow us to 
+ * work with a given instance from inside of theme and view files.
  */
 class View implements Interfaces\View
 {

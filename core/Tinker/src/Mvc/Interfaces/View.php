@@ -1,10 +1,11 @@
 <?php
 /**
+ * View
  */
 namespace Tinker\Mvc\Interfaces;
 
 /**
- * View Class
+ * View
  */
 interface View
 {

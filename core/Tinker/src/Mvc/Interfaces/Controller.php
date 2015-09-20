@@ -1,11 +1,11 @@
 <?php
 /**
- * Controller.php
+ * Controller
  */
 namespace Tinker\Mvc\Interfaces;
 
 /**
- * A base controller
+ * Controller
  */
 interface Controller
 {

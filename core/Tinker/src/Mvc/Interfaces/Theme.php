@@ -1,13 +1,16 @@
 <?php
 /**
+ * Theme
  */
 namespace Tinker\Mvc\Interfaces;
 
 /**
  * Theme
- * Any plugin with at least one file in it's layouts directory qualifies as a theme.
+ * Any plugin with at least one file in it's layouts directory qualifies as a 
+ * theme.
  * 
- * Set the following from any Controller's action or constructor to set a theme and layout.
+ * Set the following from any Controller's action or constructor to set a theme 
+ * and layout.
  * <?php 
  * class FooController extends Controller{
  *       //Sets the theme for all actions in a single controller

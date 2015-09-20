@@ -170,35 +170,4 @@ $Loader->addNamespace(
 //Load custom containers
 require APP . DS . 'config' . DS . 'containers.php';
 
-class Dispatch
-{
-
-    public function __construct($Loader, $Router) {
-        
-        $plugin = $Router->getPlugin(true);
-        $model = $Router->getPlugin(true);
-        $controller = $Router->getController(true) . 'Controller';
-        $action = $Router->getAction();
-        
-        if (!empty($Router->checkAsset($Loader))):
-            $Router->fetchAsset($Router->checkAsset($Loader));
-        else:
-            //Load the MVC stack, if a specific plugin has not been defined as a container
-            //MVC conventions will be used to load the MVC stack
-            if (Di\IoCRegistry::registered($controller)) {
-                $Controller = Di\IoCRegistry::resolve($controller);
-            } else {
-                $class = "\\{$plugin}\\Controller\\{$controller}";
-                $Model = "\\{$plugin}\\Model\\{$model}";
-
-                $Controller = new $class($Theme, $View);
-                $Controller->inject(new $Model());
-            }
-
-            $Controller->{$action}();
-        endif;
-    }
-
-}
-
-new Dispatch($Loader, $Router);
+new Dispatcher($Loader, $Router, $Theme, $View);

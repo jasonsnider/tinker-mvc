@@ -17,7 +17,6 @@ $Loader->addNamespace(
     "\MvcInterface", 'Tinker' . DS . 'src' . DS . 'Mvc' . DS . 'Interfaces'
 );
 
-
 //Autoload all files in the Tinker namespace
 $Loader->addNamespace(
     "\Tinker", 'Tinker' . DS . 'src'

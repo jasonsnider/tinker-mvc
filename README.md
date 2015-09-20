@@ -1,8 +1,5 @@
 # Tinker MVC
 
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.txt)
-[![Software License](https://img.shields.io/badge/contributors-brightgreen.svg?style=flat-square)](https://github.com/jasonsnider/tinker-mvc/graphs/contributors)
-
 An experimental framework to help me better understand various design concepts.
 
 ##Goals
@@ -67,4 +64,4 @@ is not considered __public__ then all bets are off.
 
 ## License
 
-Code released under [the MIT license](LICENSE.txt).
+Code released under [the MIT license](https://github.com/jasonsnider/tinker-mvc/blob/master/LICENSE.txt).

@@ -1,11 +1,12 @@
 <?php
 /**
- * Maps a URI to an MVC path by parsing out the URI and setting the target plugin, controller, action and parameters
+ * Router
  */
 namespace Tinker\Mvc;
 
 /**
- * Maps a URI to an MVC path by parsing out the URI and setting the target plugin, controller, action and parameters
+ * Router maps a request to an MVC path by parsing out the URI and setting the 
+ * target plugin, controller, action and parameters
  */
 class Router implements Interfaces\Router
 {
@@ -58,11 +59,13 @@ class Router implements Interfaces\Router
      * 2 /[plugin]/[controller]/index
      * 3 /[plugin]/[controller]/[action]
      * 4 /[plugin]/[controller]/[action]/[params]
-     * Any params not falling into on of the above categories will be added as named or numbered params
+     * Any params not falling into on of the above categories will be added as 
+     * named or numbered params
      */
     public function parseUri($requestUri)
     {
-        //Parse each URI segment into it's own element then remove all elements with an empty value.
+        //Parse each URI segment into it's own element then remove all elements 
+        //with an empty value.
         $uriSegments = array_filter(explode('/', $requestUri));
         $uriLegnth = count($uriSegments);
 

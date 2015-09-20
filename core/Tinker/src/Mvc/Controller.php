@@ -1,11 +1,11 @@
 <?php
 /**
- * Controller.php
+ * Controller
  */
 namespace Tinker\Mvc;
 
 /**
- * A base controller
+ * Controller
  */
 abstract class Controller implements Interfaces\Controller
 {

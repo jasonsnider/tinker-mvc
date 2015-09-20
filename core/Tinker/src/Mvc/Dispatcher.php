@@ -14,6 +14,41 @@ namespace Tinker\Mvc;
 class Dispatcher
 {
 
+    /**
+     * Gather plugins, controllers and actions
+     * Given the URI /example/main/index/p1/p2/p3/p4:1
+     * We would be passing 4 GET parameters (where p4 is a named key to value 
+     * pair and p1 - p3 would be assigned numeric keys) into the index action of 
+     * the main controller of the example plugin.
+     * 
+     * The name of the plugin should also be that plugins namespace.
+     * 
+     * We will predefine 3 possible paths for autoloading:
+     * 1. Core, the core path will look for a Plugins directory in the core 
+     * 
+     * library, this will mostly be used for building examples.
+     * 2. Main, This will check the main plugin path.
+     * 
+     * 3. App, This will check the Plugin path inside App. This directory will 
+     * ship empty by default. I'm assuming this is where you will build your 
+     * application.
+     * 
+     * An autoloader will figure out which path to pull from.
+     * Finally we will istanitate the classes based on the PSR-4 autoloading 
+     * statndards. This might look something like:
+     * 
+     * $class = '\\Example\\Controller\\MainController';
+     * $Controller = new $class();
+     * $Controller->index();
+     * 
+     * Sample URI /tinker_plugin/tinker_plugin/execute/e1/e2/e3/e4:1
+     * 
+     * @param Object $Loader
+     * @param Object $Router
+     * @param Object $Theme
+     * @param Object $View
+     * @return void
+     */
     public function __construct($Loader, $Router, $Theme, $View) {
         
         $plugin = $Router->getPlugin(true);
@@ -21,13 +56,30 @@ class Dispatcher
         $controller = $Router->getController(true) . 'Controller';
         $action = $Router->getAction();
         
+        //Autoload all plugins
+        $Loader->addNamespace(
+            $plugin,
+            'plugin' . DS . $plugin . DS . 'src'
+        );
+
+        $Loader->addNamespace(
+            $plugin,
+            APP . DS . 'plugin' . DS . $plugin . DS . 'src'
+        );
+
+        $Loader->addNamespace(
+            'App',
+            APP . DS . 'src'
+        );
+        
+        
         if (!empty($Router->checkAsset($Loader))):
             $Router->fetchAsset($Router->checkAsset($Loader));
         else:
-            //Load the MVC stack, if a specific plugin has not been defined as a container
-            //MVC conventions will be used to load the MVC stack
-            if (Di\IoCRegistry::registered($controller)) {
-                $Controller = Di\IoCRegistry::resolve($controller);
+            //Load the MVC stack, if a specific plugin has not been defined as 
+            //a container MVC conventions will be used to load the MVC stack
+            if (\Tinker\Di\IoCRegistry::registered($controller)) {
+                $Controller = \Tinker\Di\IoCRegistry::resolve($controller);
             } else {
                 $class = "\\{$plugin}\\Controller\\{$controller}";
                 $Model = "\\{$plugin}\\Model\\{$model}";

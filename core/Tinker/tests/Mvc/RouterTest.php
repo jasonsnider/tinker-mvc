@@ -118,7 +118,7 @@ class RouterTest extends \PHPUnit_Framework_TestCase
     public function testFetchAssetReturnsFalseWhenTheRequestedUriIsNotAPluginAsset()
     {
         //is empty === true
-        $testMissingFile = empty($this->MockUri8->fetchAsset($this->MockUri7->checkAsset(\Tinker\TestGlobals::getGlobal('Loader'))));
+        $testMissingFile = empty($this->MockUri8->fetchAsset($this->MockUri8->checkAsset(\Tinker\TestGlobals::getGlobal('Loader'))));
         $this->assertTrue($testMissingFile);
     }
 }

@@ -47,9 +47,10 @@ class Dispatcher
      * @param Object $Router
      * @param Object $Theme
      * @param Object $View
+     * @param boolean $render (set to false for unit testing)
      * @return void
      */
-    public function __construct($Loader, $Router, $Theme, $View) {
+    public function __construct($Loader, $Router, $Theme, $View, $render = true) {
         
         $plugin = $Router->getPlugin(true);
         $model = $Router->getPlugin(true);
@@ -61,7 +62,7 @@ class Dispatcher
             $plugin,
             'plugin' . DS . $plugin . DS . 'src'
         );
-
+        
         $Loader->addNamespace(
             $plugin,
             APP . DS . 'plugin' . DS . $plugin . DS . 'src'
@@ -72,24 +73,26 @@ class Dispatcher
             APP . DS . 'src'
         );
         
-        
-        if (!empty($Router->checkAsset($Loader))):
-            $Router->fetchAsset($Router->checkAsset($Loader));
-        else:
-            //Load the MVC stack, if a specific plugin has not been defined as 
-            //a container MVC conventions will be used to load the MVC stack
-            if (\Tinker\Di\IoCRegistry::registered($controller)) {
-                $Controller = \Tinker\Di\IoCRegistry::resolve($controller);
-            } else {
-                $class = "\\{$plugin}\\Controller\\{$controller}";
-                $Model = "\\{$plugin}\\Model\\{$model}";
+        if($render){
+            if (!empty($Router->checkAsset($Loader))):
+                $Router->fetchAsset($Router->checkAsset($Loader));
+            else:
+                //Load the MVC stack, if a specific plugin has not been defined as 
+                //a container MVC conventions will be used to load the MVC stack
+                if (\Tinker\Di\IoCRegistry::registered($controller)) {
+                    $Controller = \Tinker\Di\IoCRegistry::resolve($controller);
+                } else {
+                    $class = "\\{$plugin}\\Controller\\{$controller}";
+                    $Model = "\\{$plugin}\\Model\\{$model}";
 
-                $Controller = new $class($Theme, $View);
-                $Controller->inject(new $Model());
-            }
+                    $Controller = new $class($Theme, $View);
+                    $Controller->inject(new $Model());
+                }
 
-            $Controller->{$action}();
-        endif;
+                $Controller->{$action}();
+            endif;
+        }
+
     }
 
 }

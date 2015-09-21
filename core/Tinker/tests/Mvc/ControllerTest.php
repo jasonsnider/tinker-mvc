@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Mock the buildTime object
+ * Mock a controller
  */
 class MockController extends \App\Controller\AppController
 {

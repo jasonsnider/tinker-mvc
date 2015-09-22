@@ -27,12 +27,13 @@ if (!defined('APP')) {
 /**
  * Add core to the existing include path
  */
-set_include_path(get_include_path() . PATH_SEPARATOR . dirname(dirname(__FILE__)) . DS . 'core');
-
+set_include_path(get_include_path() . PATH_SEPARATOR . dirname(dirname(__FILE__)));
 // Build time
 // Record the current microtime, rendering the view will capture the diff
 // between now and the ~end of rendering
 require 'Tinker' . DS . 'src' . DS . 'Utility' . DS . 'BuildTime.php';
+
+
 
 $BuildTime = new Utility\BuildTime(microtime());
 

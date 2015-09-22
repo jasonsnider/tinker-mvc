@@ -26,7 +26,14 @@ class ViewTest extends \PHPUnit_Framework_TestCase
         $View2 = new \Tinker\Mvc\View($Router2, 'buildtime', $Loader2);
 
         $this->assertSame(
-            '/var/www/tinker-lib/App/plugin/Application/src/View/application/index.php', $View2->setViewPath()
+            APP . DS .
+            'plugin' . DS . 
+            'Application' . DS . 
+            'src' . DS . 
+            'View' . DS . 
+            'application' . DS . 
+            'index.php', 
+            $View2->setViewPath()
         );
     }
 }

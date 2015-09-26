@@ -127,6 +127,17 @@ class Theme implements Interfaces\Theme
         $theme = $this->getTheme();
         $layout = $this->getLayout();
 
+        //Autoload the theme paths
+        $this->Loader->addNamespace(
+            $theme,
+            'plugin' . DS . $theme . DS . 'src'
+        );
+
+        $this->Loader->addNamespace(
+            $theme,
+            APP . DS . 'plugin' . DS . $theme . DS . 'src'
+        );
+
         $paths = $this->Loader->getPrefixes();
         //var_dump($paths);
         for ($i = 0; $i < count($paths["{$theme}\\"]); $i++) {

@@ -1,10 +1,9 @@
 engines:
   phpmd:
     enabled: true
-config:
-    languages:
-      JavaScript: true
-      PHP: true
+ratings:
+  paths:
+  - "**.php"
 exclude_paths:
 - "core/Tinker/tests/**"
 - "core/plugin/**/tests/"

@@ -5,16 +5,16 @@
 namespace Tinker\Mvc;
 
 /**
- * Router maps a request to an MVC path by parsing out the URI and setting the 
+ * Router maps a request to an MVC path by parsing out the URI and setting the
  * target plugin, controller, action and parameters
- * 
+ *
  * Given the URI /example/main/index/p1/p2/p3/p4:1
- * We would be passing 4 GET parameters (where p4 is a named key to value pair 
- * and p1 - p3 would be assigned numeric keys) into the index action of the main 
+ * We would be passing 4 GET parameters (where p4 is a named key to value pair
+ * and p1 - p3 would be assigned numeric keys) into the index action of the main
  * controller of the example plugin.
- * 
+ *
  * The name of the plugin MUST also be that plugins namespace.
- * 
+ *
  */
 class Router implements Interfaces\Router
 {
@@ -35,7 +35,7 @@ class Router implements Interfaces\Router
 
     /**
      * Holds the current action
-     * @var string 
+     * @var string
      */
     private $action = 'index';
 
@@ -67,12 +67,12 @@ class Router implements Interfaces\Router
      * 2 /[plugin]/[controller]/index
      * 3 /[plugin]/[controller]/[action]
      * 4 /[plugin]/[controller]/[action]/[params]
-     * Any params not falling into on of the above categories will be added as 
+     * Any params not falling into on of the above categories will be added as
      * named or numbered params
      */
     public function parseUri($requestUri)
     {
-        //Parse each URI segment into it's own element then remove all elements 
+        //Parse each URI segment into it's own element then remove all elements
         //with an empty value.
         $uriSegments = array_filter(explode('/', $requestUri));
         $uriLegnth = count($uriSegments);
@@ -116,7 +116,7 @@ class Router implements Interfaces\Router
      * Returns a file path if a given route maps to a plugins webroot
      * directory. Retruns false if the given route does not map to a webroot
      * asset.
-     * 
+     *
      * @return mixed
      */
     public function checkAsset($Loader)
@@ -266,9 +266,7 @@ class Router implements Interfaces\Router
             $this->params['named'][$pair[0]] = $pair[1];
         } else {
             //Add the string with a numeric index
-            if (!in_array($param, $_GET)) {
-                $this->params['passed'][] = $param;
-            }
+            $this->params['passed'][] = $param;
         }
     }
 

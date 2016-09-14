@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://raw.github.com/sebastianbergmann/phpunit/master/phpunit.xsd"
+         bootstrap="index.php"
+>
+
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">../</directory>
+        </whitelist>
+    </filter>
+
+    <testsuites>
+        <testsuite name="tests">
+            <directory>../</directory>
+        </testsuite>
+    </testsuites>
+
+</phpunit>

@@ -3,13 +3,12 @@
          xsi:noNamespaceSchemaLocation="https://raw.github.com/sebastianbergmann/phpunit/master/phpunit.xsd"
          bootstrap="core/test/index.php"
 >
-    
     <filter>
-        <blacklist>
-            <directory suffix=".php">*/test</directory>
-        </blacklist>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./core</directory>
+        </whitelist>
     </filter>
-    
+
     <testsuites>
         <testsuite name="tests">
             <directory>.</directory>
@@ -17,7 +16,7 @@
             <exclude suffix=".php">plugin/*/View/*</exclude>
         </testsuite>
     </testsuites>
-    
+
     <logging>
         <log
             type="coverage-html"

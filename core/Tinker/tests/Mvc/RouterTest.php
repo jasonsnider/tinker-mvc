@@ -14,6 +14,8 @@ class RouterTest extends \PHPUnit_Framework_TestCase
         $this->MockUri7 = new \Tinker\Mvc\Router('/tinker_plugin/css/empty');
         $this->MockUri8 = new \Tinker\Mvc\Router('/tinker_plugin/css/empty.css');
         $this->MockUri9 = new \Tinker\Mvc\Router('/application/css/style.css');
+        $this->MockUri10 = new \Tinker\Mvc\Router('/plugin/controller/my_action');
+        $this->MockUri11 = new \Tinker\Mvc\Router('/plugin/controller/myAction/pass1/pass2/named1:1/pass3/named2:2');
     }
 
     public function testTheDefaultPluginIsRetrunedWhenNoPluginIsRequested()
@@ -55,6 +57,12 @@ class RouterTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('action', $this->MockUri5->getAction());
     }
 
+    public function testUrlUnderscoresInActionsAreConvertedToCamelCase()
+    {
+        $this->assertSame('myAction', $this->MockUri10->getAction());
+        $this->assertSame('myAction', $this->MockUri11->getAction());
+    }
+
     public function testNamedParamsAreGivenNamedKeysAndPassedParamsAreGivenNumericKeys()
     {
         $this->assertSame(array('named' => array(), 'passed' => array(0 => 'param')), $this->MockUri5->getParams());
@@ -89,7 +97,7 @@ class RouterTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Since this test sets a header we need to isolate it's process
-     * 
+     *
      * @preserveGlobalState
      * @runInSeparateProcess
      */

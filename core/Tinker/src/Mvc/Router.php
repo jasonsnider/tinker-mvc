@@ -297,7 +297,13 @@ class Router implements Interfaces\Router
      */
     public function getAction($studlyCaps = false)
     {
-        return $studlyCaps ? $this->studlyCaps($this->action) : $this->action;
+
+        return preg_replace_callback('/(?!^)_([a-z])/', function($string)
+        {
+            return strtoupper($string[1]);
+        }, $this->action);
+
+        //return $studlyCaps ? $this->studlyCaps($this->action) : $this->action;
     }
 
     /**

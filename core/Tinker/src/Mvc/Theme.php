@@ -1,17 +1,17 @@
 <?php
 /**
- * Theme
+ * Theme.php.
  */
 namespace Tinker\Mvc;
 
 /**
- * Theme
- * Any plugin with at least one file in it's layouts directory qualifies as a 
+ * Theme.
+ * Any plugin with at least one file in it's layouts directory qualifies as a
  * theme.
- * 
- * Set the following from any Controller's action or constructor to set a theme 
+ *
+ * Set the following from any Controller's action or constructor to set a theme
  * and layout.
- * <?php 
+ * <?php
  * class FooController extends Controller{
  *       //Sets the theme for all actions in a single controller
  * 		 public function __construct(){
@@ -19,54 +19,57 @@ namespace Tinker\Mvc;
  * 			$this->Theme->setTheme('Foo');
  * 			$this->Theme->setLayout('bar');
  * 		}
- * 
+ *
  *       //Sets the theme for a single action
  * 		 public function index(){
  * 			parent::__construct();
  * 			$this->Theme->setTheme('NewFoo');
  * 			$this->Theme->setLayout('new_bar');
- * 		}	
+ * 		}
  */
 class Theme implements Interfaces\Theme
 {
-
     /**
-     * Router
+     * Router.
+     *
      * @var object
      */
     public $Router;
 
     /**
-     * View
+     * View.
+     *
      * @var object
      */
     public $View;
 
     /**
-     * Loader
+     * Loader.
+     *
      * @var object
      */
     public $Loader;
 
     /**
-     * Holds the default theme
+     * Holds the default theme.
+     *
      * @var string
      */
     private $theme;
 
     /**
-     * Holds the default layout
+     * Holds the default layout.
+     *
      * @var string
      */
     private $layout;
 
     /**
-     * Sets dependencies
-     * 
+     * Sets dependencies.
+     *
      * @param object $Router
      * @param object $View
      * @param object $Loader
-     * @return void
      */
     public function __construct(Interfaces\Router $Router, Interfaces\View $View, $Loader)
     {
@@ -78,8 +81,10 @@ class Theme implements Interfaces\Theme
     }
 
     /**
-     * Sets the theme 
+     * Sets the theme.
+     *
      * @use Set in a controller action
+     *
      * @param string $theme
      */
     public function setTheme($theme)
@@ -88,8 +93,10 @@ class Theme implements Interfaces\Theme
     }
 
     /**
-     * Sets the layout
+     * Sets the layout.
+     *
      * @use Set in a controller action
+     *
      * @param string $layout
      */
     public function setLayout($layout)
@@ -98,7 +105,8 @@ class Theme implements Interfaces\Theme
     }
 
     /**
-     * Returns the current theme
+     * Returns the current theme.
+     *
      * @return string
      */
     public function getTheme()
@@ -107,7 +115,8 @@ class Theme implements Interfaces\Theme
     }
 
     /**
-     * Returns the current theme
+     * Returns the current theme.
+     *
      * @return string
      */
     public function getLayout()
@@ -116,13 +125,21 @@ class Theme implements Interfaces\Theme
     }
 
     /**
-     * Processes all theme logic, injects the output of a view and returns the result as a string.
-     * @param Object $View Allows the $View object to be accessable from with in a view file
+     * Processes all theme logic, injects the output of a view and returns the
+     * result as a string.
+     *
+     * @param object $View Allows the $View object to be accessable from with
+     * in a view file
+     *
      * @return string Echoing this string will render a webpage
+     *
+     * @SuppressWarnings(PHPMD.UnusedLocalVariable)
+     * Passing $View into this function makes the $View allows template and
+     * view files to access the variables set in the controller dispite not
+     * being used in the method.
      */
     public function render($View)
     {
-
         $file = null;
         $theme = $this->getTheme();
         $layout = $this->getLayout();
@@ -130,19 +147,19 @@ class Theme implements Interfaces\Theme
         //Autoload the theme paths
         $this->Loader->addNamespace(
             $theme,
-            'plugin' . DS . $theme . DS . 'src'
+            'plugin'.DS.$theme.DS.'src'
         );
 
         $this->Loader->addNamespace(
             $theme,
-            APP . DS . 'plugin' . DS . $theme . DS . 'src'
+            APP.DS.'plugin'.DS.$theme.DS.'src'
         );
 
         $paths = $this->Loader->getPrefixes();
         //var_dump($paths);
-        for ($i = 0; $i < count($paths["{$theme}\\"]); $i++) {
-            $check = $paths["{$theme}\\"][$i] .
-                'View' . DS . 'layouts' . DS . $layout . '.php';
+        for ($i = 0; $i < count($paths["{$theme}\\"]); ++$i) {
+            $check = $paths["{$theme}\\"][$i].
+                'View'.DS.'layouts'.DS.$layout.'.php';
 
             if (is_file($check)) {
                 $file = $check;
@@ -151,8 +168,8 @@ class Theme implements Interfaces\Theme
                 //paths
                 $iPaths = explode(PATH_SEPARATOR, get_include_path());
                 foreach ($iPaths as $path) {
-                    if (file_exists($path . DS . $check)) {
-                        $file = $path . DS . $check;
+                    if (file_exists($path.DS.$check)) {
+                        $file = $path.DS.$check;
                     }
                 }
             }

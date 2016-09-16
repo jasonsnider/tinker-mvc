@@ -17,18 +17,18 @@ class Configure
      * @param string $var
      * @param mixed $val
      * @return void
+     * @throws Exception
      */
     public static function write($var, $val)
     {
         if (empty(self::$vars[$var])) {
-
-            self::$vars[$var] = $val;
-        } else {
-            
-            throw new \Exception(
-            "Tinker: Cannot redeclare configuration variable {{$var}}"
-            );
+            return self::$vars[$var] = $val;
         }
+
+        throw new \Exception(
+            "Tinker: Cannot redeclare configuration variable {{$var}}"
+        );
+
     }
 
     /**

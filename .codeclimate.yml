@@ -29,3 +29,5 @@ ratings:
 exclude_paths:
 - config/
 - vendor/
+- "core/Tinker/tests/**"
+- "core/plugin/**/tests/"

@@ -24,9 +24,7 @@ class Configure
 
             self::$vars[$var] = $val;
         } else {
-
-            $value = self::$vars[$var];
-
+            
             throw new \Exception(
             "Tinker: Cannot redeclare configuration variable {{$var}}"
             );
@@ -34,7 +32,7 @@ class Configure
     }
 
     /**
-     * Reads a value from the configuration array. 
+     * Reads a value from the configuration array.
      * Passing a null key returns the entire configuration
      * @param string $var
      * @return mixed

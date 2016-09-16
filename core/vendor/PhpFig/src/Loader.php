@@ -8,10 +8,10 @@ namespace PhpFig;
  * A general-purpose implementation that includes the optional
  * functionality of allowing multiple base directories for a single namespace
  * prefix.
- * 
+ *
  * Given a foo-bar package of classes in the file system at the following
  * paths ...
- * 
+ *
  *     /path/to/packages/foo-bar/
  *         src/
  *             Baz.php             # Foo\Bar\Baz
@@ -21,30 +21,30 @@ namespace PhpFig;
  *             BazTest.php         # Foo\Bar\BazTest
  *             Qux/
  *                 QuuxTest.php    # Foo\Bar\Qux\QuuxTest
- * 
+ *
  * ... add the path to the class files for the \Foo\Bar\ namespace prefix
  * as follows:
- * 
+ *
  *      <?php
  *      // instantiate the loader
  *      $loader = new \Example\Psr4AutoloaderClass;
- *      
+ *
  *      // register the autoloader
  *      $loader->register();
- *      
+ *
  *      // register the base directories for the namespace prefix
  *      $loader->addNamespace('Foo\Bar', '/path/to/packages/foo-bar/src');
  *      $loader->addNamespace('Foo\Bar', '/path/to/packages/foo-bar/tests');
- * 
+ *
  * The following line would cause the autoloader to attempt to load the
  * \Foo\Bar\Qux\Quux class from /path/to/packages/foo-bar/src/Qux/Quux.php:
- * 
+ *
  *      <?php
  *      new \Foo\Bar\Qux\Quux;
- * 
- * The following line would cause the autoloader to attempt to load the 
+ *
+ * The following line would cause the autoloader to attempt to load the
  * \Foo\Bar\Qux\QuuxTest class from /path/to/packages/foo-bar/tests/Qux/QuuxTest.php:
- * 
+ *
  *      <?php0
  *      new \Foo\Bar\Qux\QuuxTest;
  */
@@ -70,7 +70,7 @@ class Loader
 
     /**
      * Register loader with SPL autoloader stack.
-     * 
+     *
      * @return void
      */
     public function register()
@@ -149,7 +149,7 @@ class Loader
 
     /**
      * Load the mapped file for a namespace prefix and relative class.
-     * 
+     *
      * @param string $prefix The namespace prefix.
      * @param string $relative_class The relative class name.
      * @return mixed Boolean false if no mapped file can be loaded, or the
@@ -185,7 +185,7 @@ class Loader
 
     /**
      * If a file exists, require it from the file system.
-     * 
+     *
      * @param string $file The file to require.
      * @return bool True if the file exists, false if not.
      */
@@ -196,17 +196,18 @@ class Loader
         if (is_file($file)) {
             require $file;
             return true;
-        } else {
-            //If the literal path does not resolve, check against the include
-            //paths
-            $paths = explode(PATH_SEPARATOR, get_include_path());
-            foreach ($paths as $path) {
-                if (is_file($path . DS . $file)) {
-                    require $path . DS . $file;
-                    return true;
-                }
+        }
+
+        //If the literal path does not resolve, check against the include
+        //paths
+        $paths = explode(PATH_SEPARATOR, get_include_path());
+        foreach ($paths as $path) {
+            if (is_file($path . DS . $file)) {
+                require $path . DS . $file;
+                return true;
             }
         }
+
 
         return false;
     }

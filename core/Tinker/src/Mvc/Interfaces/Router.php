@@ -5,7 +5,7 @@
 namespace Tinker\Mvc\Interfaces;
 
 /**
- * Router maps a request to an MVC path by parsing out the URI and setting the 
+ * Router maps a request to an MVC path by parsing out the URI and setting the
  * target plugin, controller, action and parameters
  */
 interface Router
@@ -72,10 +72,9 @@ interface Router
 
     /**
      * Returns the current action
-     * @param string $studlyCaps returns the action as a studlyCapsd string if set to true
      * @return string
      */
-    public function getAction($studlyCaps = false);
+    public function getAction();
 
     /**
      * Returns the current params

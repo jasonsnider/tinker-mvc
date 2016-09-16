@@ -292,18 +292,11 @@ class Router implements Interfaces\Router
 
     /**
      * Returns the current action
-     * @param string $studlyCaps returns the action as a studlyCapsd string if set to true
      * @return string
      */
-    public function getAction($studlyCaps = false)
+    public function getAction()
     {
-
-        return preg_replace_callback('/(?!^)_([a-z])/', function($string)
-        {
-            return strtoupper($string[1]);
-        }, $this->action);
-
-        //return $studlyCaps ? $this->studlyCaps($this->action) : $this->action;
+        return $this->camelCase($this->action);
     }
 
     /**

@@ -31,3 +31,5 @@ exclude_paths:
 - vendor/
 - "core/Tinker/tests/**"
 - "core/plugin/**/tests/"
+- "core/test/"
+- "core/vendor/**/tests/"

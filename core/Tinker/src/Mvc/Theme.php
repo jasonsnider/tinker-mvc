@@ -133,7 +133,7 @@ class Theme implements Interfaces\Theme
      *
      * @return string Echoing this string will render a webpage
      *
-     * @SuppressWarnings(PHPMD.UnusedLocalVariable)
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      * Passing $View into this function makes the $View allows template and
      * view files to access the variables set in the controller dispite not
      * being used in the method.

@@ -5,9 +5,9 @@
 namespace Tinker\Mvc;
 
 /**
- * View 
- * 
- * All properties of view SHOULD have public exposure. This will allow us to 
+ * View
+ *
+ * All properties of view SHOULD have public exposure. This will allow us to
  * work with a given instance from inside of theme and view files.
  */
 class View implements Interfaces\View
@@ -15,14 +15,14 @@ class View implements Interfaces\View
 
     /**
      * Holds variables for the view.
-     * 
+     *
      * @var array
      */
     public $vars;
 
     /**
      * Holds the BuildTime object
-     * @var object 
+     * @var object
      */
     public $BuildTime;
 
@@ -38,11 +38,11 @@ class View implements Interfaces\View
      */
     public $Loader;
 
-    public function __construct(Interfaces\Router $Router, $BuildTime, $Loader)
+    public function __construct(Interfaces\Router $router, $buildTime, $loader)
     {
-        $this->BuildTime = $BuildTime;
-        $this->Router = $Router;
-        $this->Loader = $Loader;
+        $this->BuildTime = $buildTime;
+        $this->Router = $router;
+        $this->Loader = $loader;
     }
 
     /**

@@ -67,15 +67,16 @@ class Theme implements Interfaces\Theme
     /**
      * Sets dependencies.
      *
-     * @param object $Router
-     * @param object $View
-     * @param object $Loader
+     * @param object $router
+     * @param object $view
+     * @param object $loader
      */
-    public function __construct(Interfaces\Router $Router, Interfaces\View $View, $Loader)
+    public function __construct(Interfaces\Router $router, Interfaces\View $view, $loader)
     {
-        $this->Router = $Router;
-        $this->View = $View;
-        $this->Loader = $Loader;
+        $this->Router = $router;
+        $this->View = $view;
+        $this->Loader = $loader;
+
         $this->theme = \Tinker\Configure::read('theme');
         $this->layout = \Tinker\Configure::read('layout');
     }

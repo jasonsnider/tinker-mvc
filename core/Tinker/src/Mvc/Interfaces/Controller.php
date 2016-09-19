@@ -12,41 +12,40 @@ interface Controller
 
     /**
      * Sets dependencies on startup
-     * 
-     * @param object $Theme
-     * @param object $View
-     * @param object $Model
+     *
+     * @param object $theme
+     * @param object $view
      * @retrun void
      */
-    public function __construct(Theme $Theme, View $View);
+    public function __construct(Theme $theme, View $view);
 
     /**
      * Injects dependencies into an object
      *
-     * @param object $Object
+     * @param object $object
      * @retrun void
      */
-    public function inject($Object);
+    public function inject($object);
 
     /**
      * A setter for $View
-     * 
-     * @param object $View
+     *
+     * @param object $view
      * @retrun void
      */
-    public function setView(View $View);
+    public function setView(View $view);
 
     /**
      * A setter for $Theme
-     * 
-     * @param object $Theme
+     *
+     * @param object $theme
      * @retrun void
      */
-    public function setTheme(Theme $Theme);
+    public function setTheme(Theme $theme);
 
     /**
      * Renders the view on shutdown
-     * 
+     *
      * @return void
      * @retrun void
      */

@@ -13,6 +13,33 @@ namespace Tinker\Mvc;
  */
 class Dispatcher
 {
+    /**
+     * Loader
+     *
+     * @var object
+     */
+    protected $Loader;
+
+    /**
+     * Router
+     *
+     * @var object
+     */
+    protected $Router;
+
+    /**
+     * Theme
+     *
+     * @var object
+     */
+    protected $Theme;
+
+    /**
+     * View
+     *
+     * @var object
+     */
+    protected $View;
 
     /**
      * Gather plugins, controllers and actions
@@ -43,10 +70,10 @@ class Dispatcher
      *
      * Sample URI /tinker_plugin/tinker_plugin/execute/e1/e2/e3/e4:1
      *
-     * @param Object $loader
-     * @param Object $router
-     * @param Object $theme
-     * @param Object $view
+     * @param object $loader
+     * @param object $router
+     * @param object $theme
+     * @param object $view
      * @param boolean $render (set to false for unit testing)
      * @return void
      */
@@ -56,7 +83,6 @@ class Dispatcher
         $this->Router = $router;
         $this->Theme = $theme;
         $this->View = $view;
-
 
         $plugin = $this->Router->getPlugin(true);
         $model = $this->Router->getPlugin(true);

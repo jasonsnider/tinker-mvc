@@ -12,30 +12,30 @@ abstract class Controller implements Interfaces\Controller
 
     /**
      * Theme
-     * 
+     *
      * @var object
      */
     protected $Theme;
 
     /**
      * View
-     * 
+     *
      * @var object
      */
     protected $View;
 
     /**
      * Sets dependencies on startup
-     * 
+     *
      * @param object $Theme
      * @param object $View
      * @param object $Model
      * @retrun void
      */
-    public function __construct(Interfaces\Theme $Theme, Interfaces\View $View)
+    public function __construct(Interfaces\Theme $theme, Interfaces\View $view)
     {
-        $this->setView($View);
-        $this->setTheme($Theme);
+        $this->setView($view);
+        $this->setTheme($theme);
     }
 
     /**
@@ -44,38 +44,38 @@ abstract class Controller implements Interfaces\Controller
      * @param object $Object
      * @retrun void
      */
-    public function inject($Object)
+    public function inject($object)
     {
-        $rc = new \ReflectionClass($Object);
+        $rc = new \ReflectionClass($object);
         $name = $rc->getShortName();
-        $this->{$name} = $Object;
+        $this->{$name} = $object;
     }
 
     /**
      * A setter for $View
-     * 
+     *
      * @param object $View
      * @retrun void
      */
-    public function setView(Interfaces\View $View)
+    public function setView(Interfaces\View $view)
     {
-        $this->View = $View;
+        $this->View = $view;
     }
 
     /**
      * A setter for $Theme
-     * 
+     *
      * @param object $Theme
      * @retrun void
      */
-    public function setTheme(Interfaces\Theme $Theme)
+    public function setTheme(Interfaces\Theme $theme)
     {
-        $this->Theme = $Theme;
+        $this->Theme = $theme;
     }
 
     /**
      * Renders the view on shutdown
-     * 
+     *
      * @return void
      * @retrun void
      */

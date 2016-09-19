@@ -27,9 +27,9 @@ abstract class Controller implements Interfaces\Controller
     /**
      * Sets dependencies on startup
      *
-     * @param object $Theme
-     * @param object $View
-     * @param object $Model
+     * @param object $theme
+     * @param object $view
+     *
      * @retrun void
      */
     public function __construct(Interfaces\Theme $theme, Interfaces\View $view)
@@ -41,7 +41,8 @@ abstract class Controller implements Interfaces\Controller
     /**
      * Injects dependencies into an object
      *
-     * @param object $Object
+     * @param object $object
+     *
      * @retrun void
      */
     public function inject($object)
@@ -54,7 +55,8 @@ abstract class Controller implements Interfaces\Controller
     /**
      * A setter for $View
      *
-     * @param object $View
+     * @param object $view
+     *
      * @retrun void
      */
     public function setView(Interfaces\View $view)

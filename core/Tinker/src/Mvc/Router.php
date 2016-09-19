@@ -52,7 +52,6 @@ class Router implements Interfaces\Router
      * Sets the URI for parsing or retrives an asset file.
      *
      * @param string $requestUri Represents the URI to be parsed
-     * @param object $Loader
      * @return void
      */
     public function __construct($requestUri)
@@ -69,6 +68,8 @@ class Router implements Interfaces\Router
      * 4 /[plugin]/[controller]/[action]/[params]
      * Any params not falling into on of the above categories will be added as
      * named or numbered params
+     *
+     * @param string $requestUri Represents the URI to be parsed
      */
     public function parseUri($requestUri)
     {
@@ -119,7 +120,7 @@ class Router implements Interfaces\Router
      *
      * @return mixed
      */
-    public function checkAsset($Loader)
+    public function checkAsset($loader)
     {
         //The plugin name as it appears on the servers file path
         $plugin = $this->getPlugin(true);
@@ -132,7 +133,7 @@ class Router implements Interfaces\Router
         $controller = $this->getController(false);
 
         //All registered auto loader prefixes
-        $paths = $Loader->getPrefixes();
+        $paths = $loader->getPrefixes();
 
         //Holds an asset's file path. If mulitpe paths contain an asset of the
         //same name, the last path containing the asset wins

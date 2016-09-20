@@ -47,8 +47,8 @@ abstract class Controller implements Interfaces\Controller
      */
     public function inject($object)
     {
-        $rc = new \ReflectionClass($object);
-        $name = $rc->getShortName();
+        $reflectionClass = new \ReflectionClass($object);
+        $name = $reflectionClass->getShortName();
         $this->{$name} = $object;
     }
 

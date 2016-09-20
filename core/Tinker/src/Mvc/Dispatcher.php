@@ -117,7 +117,7 @@ class Dispatcher
                     $class = "\\{$plugin}\\Controller\\{$controller}";
                     $Model = "\\{$plugin}\\Model\\{$model}";
 
-                    $Controller = new $class($Theme, $View);
+                    $Controller = new $class($this->Theme, $this->View);
                     $Controller->inject(new $Model());
                 }
 

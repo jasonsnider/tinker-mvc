@@ -82,20 +82,20 @@ class Loader
      * Adds a base directory for a namespace prefix.
      *
      * @param string $prefix The namespace prefix.
-     * @param string $base_dir A base directory for class files in the
+     * @param string $baseDir A base directory for class files in the
      * namespace.
      * @param bool $prepend If true, prepend the base directory to the stack
      * instead of appending it; this causes it to be searched first rather
      * than last.
      * @return void
      */
-    public function addNamespace($prefix, $base_dir, $prepend = false)
+    public function addNamespace($prefix, $baseDir, $prepend = false)
     {
         // normalize namespace prefix
         $prefix = trim($prefix, '\\') . '\\';
 
         // normalize the base directory with a trailing separator
-        $base_dir = rtrim($base_dir, DIRECTORY_SEPARATOR) . '/';
+        $baseDir = rtrim($baseDir, DIRECTORY_SEPARATOR) . '/';
 
         // initialize the namespace prefix array
         if (isset($this->prefixes[$prefix]) === false) {
@@ -104,9 +104,9 @@ class Loader
 
         // retain the base directory for the namespace prefix
         if ($prepend) {
-            array_unshift($this->prefixes[$prefix], $base_dir);
+            array_unshift($this->prefixes[$prefix], $baseDir);
         } else {
-            array_push($this->prefixes[$prefix], $base_dir);
+            array_push($this->prefixes[$prefix], $baseDir);
         }
     }
 
@@ -130,12 +130,12 @@ class Loader
             $prefix = substr($class, 0, $pos + 1);
 
             // the rest is the relative class name
-            $relative_class = substr($class, $pos + 1);
+            $relativeClass = substr($class, $pos + 1);
 
             // try to load a mapped file for the prefix and relative class
-            $mapped_file = $this->loadMappedFile($prefix, $relative_class);
-            if ($mapped_file) {
-                return $mapped_file;
+            $mappedFile = $this->loadMappedFile($prefix, $relativeClass);
+            if ($mappedFile) {
+                return $mappedFile;
             }
 
             // remove the trailing namespace separator for the next iteration
@@ -151,11 +151,11 @@ class Loader
      * Load the mapped file for a namespace prefix and relative class.
      *
      * @param string $prefix The namespace prefix.
-     * @param string $relative_class The relative class name.
+     * @param string $relativeClass The relative class name.
      * @return mixed Boolean false if no mapped file can be loaded, or the
      * name of the mapped file that was loaded.
      */
-    protected function loadMappedFile($prefix, $relative_class)
+    protected function loadMappedFile($prefix, $relativeClass)
     {
         // are there any base directories for this namespace prefix?
         if (isset($this->prefixes[$prefix]) === false) {
@@ -163,13 +163,13 @@ class Loader
         }
 
         // look through base directories for this namespace prefix
-        foreach ($this->prefixes[$prefix] as $base_dir) {
+        foreach ($this->prefixes[$prefix] as $baseDir) {
 
             // replace the namespace prefix with the base directory,
             // replace namespace separators with directory separators
             // in the relative class name, append with .php
-            $file = $base_dir
-                . str_replace('\\', '/', $relative_class)
+            $file = $baseDir
+                . str_replace('\\', '/', $relativeClass)
                 . '.php';
 
             // if the mapped file exists, require it

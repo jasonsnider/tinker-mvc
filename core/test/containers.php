@@ -18,10 +18,10 @@ Di\IoCRegistry::register('TinkerPluginController', function() use (
     $controller = $Router->getController(true) . 'Controller';
     
     $class = "\\{$plugin}\\Controller\\{$controller}";
-    $Model = "\\{$plugin}\\Model\\{$model}";
+    $model = "\\{$plugin}\\Model\\{$model}";
 
     $controller = new $class($Theme, $View);
-    $controller->inject(new $Model());
+    $controller->inject(new $model());
     
     return $controller;
 });

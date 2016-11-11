@@ -115,10 +115,10 @@ class Dispatcher
                     $controller = \Tinker\Di\IoCRegistry::resolve($controller);
                 } else {
                     $class = "\\{$plugin}\\Controller\\{$controller}";
-                    $Model = "\\{$plugin}\\Model\\{$model}";
+                    $model = "\\{$plugin}\\Model\\{$model}";
 
                     $controller = new $class($this->Theme, $this->View);
-                    $controller->inject(new $Model());
+                    $controller->inject(new $model());
                 }
 
                 $controller->{$action}();

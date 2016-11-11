@@ -20,10 +20,10 @@ Di\IoCRegistry::register('ApplicationController', function() use (
     $class = "\\{$plugin}\\Controller\\{$controller}";
     $Model = "\\{$plugin}\\Model\\{$model}";
 
-    $Controller = new $class($Theme, $View);
-    $Controller->inject(new $Model());
+    $controller = new $class($Theme, $View);
+    $controller->inject(new $Model());
     
-    return $Controller;
+    return $controller;
 });
 
 ///// Custom Containers //////

@@ -65,8 +65,8 @@ class Dispatcher
      * statndards. This might look something like:
      *
      * $class = '\\Example\\Controller\\MainController';
-     * $Controller = new $class();
-     * $Controller->index();
+     * $controller = new $class();
+     * $controller->index();
      *
      * Sample URI /tinker_plugin/tinker_plugin/execute/e1/e2/e3/e4:1
      *
@@ -112,16 +112,16 @@ class Dispatcher
                 //Load the MVC stack, if a specific plugin has not been defined as
                 //a container MVC conventions will be used to load the MVC stack
                 if (\Tinker\Di\IoCRegistry::registered($controller)) {
-                    $Controller = \Tinker\Di\IoCRegistry::resolve($controller);
+                    $controller = \Tinker\Di\IoCRegistry::resolve($controller);
                 } else {
                     $class = "\\{$plugin}\\Controller\\{$controller}";
                     $Model = "\\{$plugin}\\Model\\{$model}";
 
-                    $Controller = new $class($this->Theme, $this->View);
-                    $Controller->inject(new $Model());
+                    $controller = new $class($this->Theme, $this->View);
+                    $controller->inject(new $Model());
                 }
 
-                $Controller->{$action}();
+                $controller->{$action}();
             endif;
         }
 

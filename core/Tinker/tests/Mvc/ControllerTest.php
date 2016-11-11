@@ -45,7 +45,7 @@ class ControllerTest extends \PHPUnit_Framework_TestCase
 {
 
     private $action;
-    private $Controller;
+    private $controller;
 
     public function __construct()
     {

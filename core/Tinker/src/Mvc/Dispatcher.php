@@ -106,8 +106,8 @@ class Dispatcher
         );
 
         if($render){
-            if (!empty($this->Router->checkAsset($Loader))):
-                $this->Router->fetchAsset($this->Router->checkAsset($Loader));
+            if (!empty($this->Router->checkAsset($loader))):
+                $this->Router->fetchAsset($this->Router->checkAsset($loader));
             else:
                 //Load the MVC stack, if a specific plugin has not been defined as
                 //a container MVC conventions will be used to load the MVC stack

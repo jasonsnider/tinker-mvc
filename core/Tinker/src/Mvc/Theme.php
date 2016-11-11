@@ -41,7 +41,7 @@ class Theme implements Interfaces\Theme
      *
      * @var object
      */
-    public $View;
+    public $view;
 
     /**
      * Loader.
@@ -129,17 +129,17 @@ class Theme implements Interfaces\Theme
      * Processes all theme logic, injects the output of a view and returns the
      * result as a string.
      *
-     * @param object $View Allows the $View object to be accessable from with
+     * @param object $view Allows the $view object to be accessable from with
      * in a view file
      *
      * @return string Echoing this string will render a webpage
      *
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
-     * Passing $View into this function makes the $View allows template and
+     * Passing $view into this function makes the $view allows template and
      * view files to access the variables set in the controller dispite not
      * being used in the method.
      */
-    public function render($View)
+    public function render($view)
     {
         $file = null;
         $theme = $this->getTheme();

@@ -36,16 +36,16 @@ $Router = Di\IoCRegistry::resolve('Router');
 
 //View
 Di\IoCRegistry::register('View', function() use ($Router, $BuildTime, $Loader) {
-    $View = new Mvc\View($Router, $BuildTime, $Loader);
-    return $View;
+    $view = new Mvc\View($Router, $BuildTime, $Loader);
+    return $view;
 });
 
-$View = Di\IoCRegistry::resolve('View');
+$view = Di\IoCRegistry::resolve('View');
 
 //Theme
-Di\IoCRegistry::register('Theme', function() use ($Router, $View, $Loader) {
-    $View = new \Tinker\Mvc\Theme($Router, $View, $Loader);
-    return $View;
+Di\IoCRegistry::register('Theme', function() use ($Router, $view, $Loader) {
+    $view = new \Tinker\Mvc\Theme($Router, $view, $Loader);
+    return $view;
 });
 
 $Theme = Di\IoCRegistry::resolve('Theme');

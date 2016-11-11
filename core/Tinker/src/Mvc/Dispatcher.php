@@ -39,7 +39,7 @@ class Dispatcher
      *
      * @var object
      */
-    protected $View;
+    protected $view;
 
     /**
      * Gather plugins, controllers and actions

@@ -40,7 +40,7 @@ $BuildTime = new Utility\BuildTime(microtime());
 //Bootstrap the application
 require 'bootstrap.php';
 
-new Mvc\Dispatcher($Loader, $Router, $Theme, $View, false);
+new Mvc\Dispatcher($Loader, $Router, $Theme, $view, false);
 
 /**
  * A shamfull hack for passing an instance into a unit test

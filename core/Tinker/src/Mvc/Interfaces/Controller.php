@@ -28,7 +28,7 @@ interface Controller
     public function inject($object);
 
     /**
-     * A setter for $View
+     * A setter for $view
      *
      * @param object $view
      * @retrun void

@@ -10,7 +10,7 @@ namespace Tinker;
 Di\IoCRegistry::register('TinkerPluginController', function() use (
         $Router, 
         $Theme, 
-        $View
+        $view
     ) {
     
     $plugin = $Router->getPlugin(true);
@@ -20,7 +20,7 @@ Di\IoCRegistry::register('TinkerPluginController', function() use (
     $class = "\\{$plugin}\\Controller\\{$controller}";
     $model = "\\{$plugin}\\Model\\{$model}";
 
-    $controller = new $class($Theme, $View);
+    $controller = new $class($Theme, $view);
     $controller->inject(new $model());
     
     return $controller;

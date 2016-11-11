@@ -36,12 +36,12 @@
       </div>
     </nav>
 
-    <?php echo $View->getOutput(); ?>
+    <?php echo $view->getOutput(); ?>
 
     <div class="container">
       <hr>
       <footer class="text-center">
-        <?php echo 'Hi, it took Apache ' . round($View->BuildTime->end(microtime()), 5) . ' seconds to render this page.'; ?>
+        <?php echo 'Hi, it took Apache ' . round($view->BuildTime->end(microtime()), 5) . ' seconds to render this page.'; ?>
       </footer>
     </div>
     <!-- Bootstrap core JavaScript

@@ -61,7 +61,7 @@ interface Theme
 
     /**
      * Processes all theme logic, injects the output of a view and returns the result as a string.
-     * @param Object $view Allows the $View object to be accessable from with in a view file
+     * @param Object $view Allows the $view object to be accessable from with in a view file
      * @return string Echoing this string will render a webpage
      */
     public function render($view);

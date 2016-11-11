@@ -35,4 +35,4 @@ $BuildTime = new Utility\BuildTime(microtime());
 //Bootstrap the application
 require APP . DS . 'config' . DS . 'bootstrap.php';
 
-new Mvc\Dispatcher($Loader, $Router, $Theme, $View);
+new Mvc\Dispatcher($Loader, $Router, $Theme, $view);

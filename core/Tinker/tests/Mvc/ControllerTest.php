@@ -89,10 +89,10 @@ class ControllerTest extends \PHPUnit_Framework_TestCase
         //Mock index.php
         $BuildTime = new \Tinker\Utility\BuildTime(microtime());
         $Router = new \Tinker\Mvc\Router('/tinker_plugin/tinker_plugin/index/e1/e2/e3/e4:1');
-        $View = new \Tinker\Mvc\View($Router, $BuildTime, $Loader);
-        $Theme = new \Tinker\Mvc\Theme($Router, $View, $Loader);
+        $view = new \Tinker\Mvc\View($Router, $BuildTime, $Loader);
+        $Theme = new \Tinker\Mvc\Theme($Router, $view, $Loader);
 
-        $mc = new MockController($Theme, $View);
+        $mc = new MockController($Theme, $view);
         $mc->inject(new \TinkerPlugin\Model\TinkerPlugin());
         $mc->inject(new MockModel());
         $mc->inject(new MockModel());

@@ -10,11 +10,11 @@ class ViewTest extends \PHPUnit_Framework_TestCase
     {
 
         //Test against an include path
-        $View = new \Tinker\Mvc\View(new Mvc\Router('/'), 'buildtime', 'loader');
+        $view = new \Tinker\Mvc\View(new Mvc\Router('/'), 'buildtime', 'loader');
 
-        $this->assertInstanceOf('\Tinker\Mvc\Interfaces\Router', $View->Router);
-        $this->assertSame('buildtime', $View->BuildTime);
-        $this->assertSame('loader', $View->Loader);
+        $this->assertInstanceOf('\Tinker\Mvc\Interfaces\Router', $view->Router);
+        $this->assertSame('buildtime', $view->BuildTime);
+        $this->assertSame('loader', $view->Loader);
 
         //Test against a defined path
         $Router2 = new Mvc\Router('/application/');
@@ -23,7 +23,7 @@ class ViewTest extends \PHPUnit_Framework_TestCase
             'Application', APP . DS . 'plugin' . DS . 'Application' . DS . 'src'
         );
 
-        $View2 = new \Tinker\Mvc\View($Router2, 'buildtime', $Loader2);
+        $view2 = new \Tinker\Mvc\View($Router2, 'buildtime', $Loader2);
 
         $this->assertSame(
             APP . DS .
@@ -33,7 +33,7 @@ class ViewTest extends \PHPUnit_Framework_TestCase
             'View' . DS . 
             'application' . DS . 
             'index.php', 
-            $View2->setViewPath()
+            $view2->setViewPath()
         );
     }
 }

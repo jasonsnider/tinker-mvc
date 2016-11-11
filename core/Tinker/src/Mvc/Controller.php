@@ -22,7 +22,7 @@ abstract class Controller implements Interfaces\Controller
      *
      * @var object
      */
-    protected $View;
+    protected $view;
 
     /**
      * Sets dependencies on startup
@@ -53,7 +53,7 @@ abstract class Controller implements Interfaces\Controller
     }
 
     /**
-     * A setter for $View
+     * A setter for $view
      *
      * @param object $view
      *
